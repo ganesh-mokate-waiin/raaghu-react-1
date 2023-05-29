@@ -85,8 +85,9 @@ export interface MainProps {
 
 const Main = (props: MainProps) => {
   const [languageData, setLanguageData] = useState<any[]>([]);
-  const [themes, setThemes] = useState("light");
-  const [logoImage, setLogoImage] = useState("./assets/raaghu_logs.png");
+  const [themes, setThemes] = useState(localStorage.getItem("theme") || "light");
+
+  const [logoImage, setLogoImage] = useState(localStorage.getItem("logo") || "./assets/raaghu_logs.png");
   const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("currentLang")|| "en-GB");
   const [currentLanguageLabel, setCurrentLanguageLabel] = useState("");
   const [currentLanguageIcon, setCurrentLanguageIcon] = useState("");
@@ -329,13 +330,19 @@ const Main = (props: MainProps) => {
   const onClicktheme = (e: any, val: any) => {
     if (val == "Light") {
       setThemes("light");
+      localStorage.setItem("theme",'light')
       setLogoImage("./assets/raaghu_logs.png");
+      localStorage.setItem("logo",'./assets/raaghu_logs.png')
     } else if (val == "Dark") {
       setThemes("dark");
+      localStorage.setItem("theme",'dark')
       setLogoImage("./assets/raaghu-logo-white-text.png");
+      localStorage.setItem("logo",'./assets/raaghu-logo-white-text.png')
     } else if (val == "Semi Dark") {
       setThemes("semidark");
+      localStorage.setItem("theme",'semidark')
       setLogoImage("./assets/raaghu-logo-white-text.png");
+      localStorage.setItem("logo",'./assets/raaghu-logo-white-text.png')
     }
   };
 
