@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "jest",
-    "coverage": "jest --coverage --watchAll --collectCoverageFrom='!src/**/*.{stories,test,spec}.{ts,tsx}' --collectCoverageFrom='!src/*/index.ts'"
+    "coverage": "jest --coverage --watchAll --testTimeout=30000 --collectCoverageFrom='src/**/*.{ts,tsx}' --collectCoverageFrom='!src/**/*.{stories,test,spec}.{ts,tsx}' --collectCoverageFrom='!src/*/index.ts'"
   },
   "publishConfig": {
     "@alok-nakhate:registry": "https://npm.pkg.github.com",

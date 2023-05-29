@@ -136,6 +136,7 @@ const RdsCompUserBasics = (props: RdsCompUserBasicsProps) => {
                 value={userData.password}
                 inputType="password"
                 label="Password"
+                placeholder="Enter Password"
                 name="password"
                 required={true}
                 onChange={(e) => { setPassword(e) }}

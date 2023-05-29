@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../libs/state-management/hooks";
-import { RdsButton, RdsNavtabs } from "'../rds-elements'";
+import { RdsButton, RdsNavtabs } from "../../../rds-elements";
 import { RdsCompSyntaxHighlighter } from "../../../rds-components";
 import { getGlobalResources, saveGlobalResources } from "../../../../libs/state-management/global-resources/globalResources-slice";
 

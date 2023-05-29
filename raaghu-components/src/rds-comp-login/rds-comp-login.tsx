@@ -16,6 +16,8 @@ export interface RdsCompLoginProps {
   email: string;
   password: string;
   onDismissAlert?: () => any;
+  onEmailChange?:()=>any;
+  onPasswordChange?:()=>any;
   onLogin: (email: string, password: string, rememberMe: boolean) => any;
   onForgotPassword: (isForgotPasswordClicked?: boolean) => void;
   onRegister: (isRegisterClicked?: boolean) => void;
@@ -35,7 +37,9 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
   const [rememberMe, setrememberMe] = useState(false);
 
   useEffect(() => {
-    setEmail(props.email);
+    if(props.email){
+      setEmail(props.email);
+    }
   }, [props.email]);
 
   //side effect of props.error
@@ -44,7 +48,10 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
   }, [props.error]);
 
   useEffect(() => {
-    setPassword(props.password);
+    if(props.password){
+      setPassword(props.password);
+    }
+  
   }, [props.password]);
 
   useEffect(() => {
@@ -70,11 +77,13 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
   const emailhandleChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
+    props.onEmailChange && props.onEmailChange();
     setEmail(event.target.value);
   };
   const passwordhandleChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
+    props.onPasswordChange && props.onPasswordChange();
     setPassword(event.target.value);
   };
   const TenancyNameChange = (event: {
@@ -85,8 +94,8 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
 
   const isFormValid = isPasswordValid(password) && isEmailValid(email);
 
-  const handleSubmit: any = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit: any = (event: any) => {
+    // event.preventDefault();
     props.onLogin(email, password, rememberMe);
     // setEmail("");
     // setPassword("");
@@ -153,6 +162,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                       }`}
                       checked={checked} isSwitch={checked}
                       onChange={() => setChecked(!checked)}
+                      dataTestId="swtich-checkbox"
                     ></RdsCheckbox>
                   </div>
                   <RdsInput
@@ -164,6 +174,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                     name={"currentTenant"}
                     required={true}
                     isDisabled={!checked}
+                    dataTestId="tenancy-name"
                   ></RdsInput>
                 </div>
                 <div className=" mb-2 mt-3 d-flex justify-content-end">
@@ -175,6 +186,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                     colorVariant="outline-primary"
                     size="small"
                     databsdismiss="modal"
+                    dataTestId="cancel"
                   ></RdsButton>
                   <RdsButton
                     class="me-2"
@@ -191,6 +203,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                       props.validTenant(currentTenant);
                       setChecked(!checked);
                     }}
+                    dataTestId="switch-btn"
                   ></RdsButton>
                 </div>
               </RdsModal>
@@ -211,7 +224,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
               </div>
             )}
           </div>
-          <form onSubmit={handleSubmit}>
+       
             <div className="form-group text-start">
               <RdsInput
                 label="Email/Username"
@@ -221,6 +234,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                 value={email}
                 name={"email"}
                 required={true}
+                dataTestId="username"
               ></RdsInput>
             </div>
 
@@ -233,6 +247,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                 onChange={passwordhandleChange}
                 name={"password"}
                 value={password}
+                dataTestId="password"
               ></RdsInput>
             </div>
             <div className="d-flex justify-content-between mt-2 mb-4">
@@ -242,6 +257,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                     label={"Remember me"}
                     checked={rememberMe}
                     onChange={onCheckedHandler}
+                    dataTestId="remember-me"
                   ></RdsCheckbox>
                 </div>
               </div>
@@ -262,7 +278,9 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
               isDisabled={!isFormValid}
               block={true}
               tooltipTitle={""}
-              type="submit"
+              // type="submit"
+              onClick={handleSubmit}
+              dataTestId="login"
             />
              <div className="mt-3">
               <p>Don't Have An Account  <span><a
@@ -273,7 +291,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
                 Register
               </a></span></p>
             </div>
-          </form>
+   
           <div className="pt-2">
             <RdsLabel
               class="text-mute pt-2 secondary "

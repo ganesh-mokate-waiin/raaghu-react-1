@@ -256,7 +256,7 @@ const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
         )}
       </div>
     </div>
-     <div className="align-items-end bg-transparent d-lg-flex d-md-flex d-xl-flex d-xxl-flex end-0 h-100 justify-content-end position-sm-relative pt-0 pt-4">
+     <div className="align-items-end bg-transparent d-lg-flex d-md-flex d-xl-flex d-xxl-flex end-0 h-100 justify-content-end position-sm-relative pt-0 pt-4 footer-buttons">
      <div className="mb-3">
        <RdsButton
          class="me-2"

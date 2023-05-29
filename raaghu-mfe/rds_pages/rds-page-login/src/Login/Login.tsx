@@ -72,6 +72,13 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
       }) as any
     );
   };
+  const emailHandler =()=>{
+    handlerDismissAlert()
+  }
+  const passwordHandler =()=>{
+    handlerDismissAlert()
+  }
+
   return (
     <div className="login-background">
       <div className="align-items-center d-flex justify-content-center vh-100 m-auto login-container">
@@ -88,6 +95,8 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
                   email={"" || loginData.callLogin?.email}
                   password={"" || loginData.callLogin?.password}
                   onLogin={loginHandler}
+                  onEmailChange={emailHandler}
+                  onPasswordChange={passwordHandler}
                   error={Alert}
                   onDismissAlert={handlerDismissAlert}
                   onForgotPassword={forgotPasswordHandler}

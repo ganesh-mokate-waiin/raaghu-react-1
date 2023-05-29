@@ -351,11 +351,7 @@ const Pages = (props: any) => {
                   }
                 />
               </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <RdsCompPages
+              <RdsCompPages
             tableHeaders={tableHeaders}
             actions={actions}
             tableData={tableData!}
@@ -363,6 +359,11 @@ const Pages = (props: any) => {
             onActionSelection={onActionHandler}
             recordsPerPage={10}
           ></RdsCompPages>
+            </div>
+          </div>
+        </div>
+        <div>
+        
 
           <RdsOffcanvas
             canvasTitle="Edit Page"

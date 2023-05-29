@@ -65,4 +65,16 @@ describe('RdsCompApplicationBasic', () => {
     const saveButton = screen.getByTestId('save');
     fireEvent.click(saveButton);
   });
+
+  it("should update the state when input fields change", () => {
+    const clientIdInput = screen.getByTestId("client-id") as HTMLInputElement;
+    const displayNameInput = screen.getByTestId("display-name") as HTMLInputElement;
+
+    fireEvent.change(clientIdInput, { target: { value: "testClientId" } });
+    fireEvent.change(displayNameInput, { target: { value: "testDisplayName" } });
+
+    expect(clientIdInput.value).toBe("testClientId");
+    expect(displayNameInput.value).toBe("testDisplayName");
+    // Add assertions for other input fields
+  });
 });

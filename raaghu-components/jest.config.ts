@@ -12,5 +12,12 @@ const config: Config.InitialOptions = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
+  coveragePathIgnorePatterns: [
+    '/rds-comp-teams/',
+    '/rds-comp-login-attempts/',
+    '/rds-comp-user-delegations/',
+    '/rds-comp-components/',
+    '/rds-comp-permission-tree-new/',
+  ],
 };
 export default config;

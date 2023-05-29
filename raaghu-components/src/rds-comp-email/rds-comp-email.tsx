@@ -183,7 +183,7 @@ useEffect( () => {
         </div>
 
         {condition }
-        <div className="position-relative bottom-0 d-flex justify-content-end">
+        <div className="d-flex footer-buttons justify-content-end">
           <div className=" d-flex justify-content-start mt-3" >
             <RdsButton
               class="me-2"
