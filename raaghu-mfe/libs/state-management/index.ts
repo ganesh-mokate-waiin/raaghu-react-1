@@ -1,3 +1,4 @@
+import logoutReducer from "./logout/logout-slice";
 import registerReducer from "./register/register-slice";
 import blogPostReducer from "./blog-post/blog-post-slice";
 import pagesReducer from "./pages/pages-slice";
@@ -40,12 +41,13 @@ import globalResourcesReducer from './global-resources/globalResources-slice';
 import menusReducer from "./menus/menus-slice"
 import blogsReducer from "./Blogs/blogs-slice"
 
-const persistConfig={
+const persistConfig = {
   key: "root",
   storage,
   blacklist: ["forgotPassword"],
 };
 const rootReducer = combineReducers({
+  Logout: logoutReducer,
   register: registerReducer,
   blogPost: blogPostReducer,
   pages: pagesReducer,
@@ -77,11 +79,11 @@ const rootReducer = combineReducers({
   host: hostReducer,
   myaccount: myAccountReducer,
   paymentRequests: paymentRequestsReducer,
-  polls:pollsReducer,
-  globalResources:globalResourcesReducer,
-  newsletters:newslettersReducer,
-  menus:menusReducer,
-  blogs:blogsReducer
+  polls: pollsReducer,
+  globalResources: globalResourcesReducer,
+  newsletters: newslettersReducer,
+  menus: menusReducer,
+  blogs: blogsReducer
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
