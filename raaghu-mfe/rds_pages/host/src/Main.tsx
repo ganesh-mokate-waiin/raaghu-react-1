@@ -77,6 +77,7 @@ import {
 } from "./PageComponent";
 import openidConfig from "./openid.config";
 import { iteratee } from "lodash-es";
+import { logoutRequest } from "../../../libs/public.api";
 ("../ApiRequestOptions");
 
 export interface MainProps {
@@ -90,6 +91,7 @@ const Main = (props: MainProps) => {
   const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("currentLang")|| "en-GB");
   const [currentLanguageLabel, setCurrentLanguageLabel] = useState("");
   const [currentLanguageIcon, setCurrentLanguageIcon] = useState("");
+  const [auth, setauth] = useState(false);
 
   const [appTheme, setAppTheme] = useState<any[]>([]);
 
@@ -142,15 +144,35 @@ const Main = (props: MainProps) => {
       "REACT_APP_API_URL",
       process.env.REACT_APP_API_URL || ""
     );
-    if (localStorage.getItem("auth")) {
-      if (currentPath !== "/raaghu-dashboard" && currentPath !== "/") {
-        navigate(currentPath);
+
+    const loginAccessDate = localStorage.getItem("loginAccessDate") || Date.now();
+    let expirationTime = localStorage.getItem("expiresIn")|| "3786";
+    let accesstokenexpired 
+
+    
+    if (loginAccessDate && expirationTime ) {
+      accesstokenexpired =  Date.now() - new Date(loginAccessDate).getTime();
+      console.log("accesstokenexpired", parseInt(expirationTime)*1000,accesstokenexpired, Date.now(),new Date(loginAccessDate).getTime())
+
+      if (sessionStorage.getItem("auth") && (  parseInt(expirationTime)*1000 > accesstokenexpired) ) {
+        if (currentPath !== "/raaghu-dashboard" && currentPath !== "/") {
+          navigate(currentPath);
+        } else {
+          navigate("/raaghu-dashboard");
+        }
       } else {
-        navigate("/raaghu-dashboard");
+        setauth(false)
+        sessionStorage.setItem("accessToken", "");
+        localStorage.setItem("refreshToken","");
+        localStorage.setItem("expiresIn", "");
+        localStorage.setItem("loginAccessDate",'');
+        navigate("/login");
       }
-    } else {
-      navigate("/login");
+
+
+
     }
+   
   }, []);
 
   useEffect(() => {
@@ -559,6 +581,7 @@ const Main = (props: MainProps) => {
             await dispatch(
               invalidCredentialAction({ invalid: false, message: "" })
             );
+            setauth(true)
             localStorage.setItem("auth", JSON.stringify(true));
    
     navigate("/raaghu-dashboard");
@@ -643,8 +666,13 @@ const Main = (props: MainProps) => {
 
   const logout = () => {
     localStorage.clear();
-    //store.accessToken = null;
+    dispatch(logoutRequest()as any).then((res:any)=>{
+      setauth(false)
+      sessionStorage.setItem("accessToken","")
+    console.log(res)
+    })
     navigate("/login");
+    console.log("onlogout",sessionStorage.getItem("accessToken"))
   };
 
   let logo = "./assets/raaghu_logs.png";
@@ -660,7 +688,7 @@ const Main = (props: MainProps) => {
         <Route path="/changepassword" element={<ChangePasswordCompo />}></Route>
         <Route path="/register" element={<RegisterCompo />} />
       </Routes>
-      {localStorage.getItem("auth") && (
+      {auth && (
         <>
           {location.pathname != "/login" &&
             location.pathname != "/forgot-password" &&
