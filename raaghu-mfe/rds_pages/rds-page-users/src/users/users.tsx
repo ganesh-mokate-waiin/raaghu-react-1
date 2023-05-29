@@ -157,7 +157,7 @@ const Users = () => {
     { label: "Roles", tablink: "#nav-role", id: 1 },
     { label: "Organization Units", tablink: "#nav-org", id: 2 },
     { label: "Permissions", tablink: "#nav-profile", id: 3 },
-    { label: "Set Password", tablink: "#set-password", id: 4 },
+    // { label: "Set Password", tablink: "#set-password", id: 4 },
   ];
   const navtabsItems = [
     { label: "Basics", tablink: "#nav-home", id: 0 },
@@ -903,7 +903,7 @@ const Users = () => {
                   </div>
                 </div>
               </div> */}
-               <div className="footer-buttons justify-content-end bottom-0 pt-0">
+               <div className="footer-buttons d-flex justify-content-end bottom-0 pt-0">
                <RdsButton
             class="me-2"
             label="CANCEL"
@@ -931,7 +931,7 @@ const Users = () => {
          
         </RdsNavtabs>
 
-        <div className="footer-buttons justify-content-end bottom-0 pt-0">
+        <div className="footer-buttons d-flex justify-content-end bottom-0 pt-0">
           <RdsButton
             class="me-2"
             label="CANCEL"
