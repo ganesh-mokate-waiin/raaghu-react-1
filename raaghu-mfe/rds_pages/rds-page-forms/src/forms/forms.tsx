@@ -181,148 +181,156 @@ const Forms = () => {
     dispatch(SaveFormsSendResponse(_data) as any);
   }
   return (
-    <>
-      <div className="row">
-
-        <div className=" col-md-6">
-          {alert.showAlert && alertOne && (
-            <RdsAlert
-              alertmessage={alert.message}
-              colorVariant={alert.success ? "success" : "danger"}></RdsAlert>
-          )}
+    <div className="container-fluid p-0 m-0">
+    <div className="row">
+    <div className="col-md-12 mb-3 ">
+      <div className="row ">
+        <div className="col-md-4">
+        {alert.showAlert && alertOne && (
+                <RdsAlert
+                  alertmessage={alert.message}
+                  colorVariant={alert.success ? "success" : "danger"}></RdsAlert>
+              )}
         </div>
-        <div className="col-6 d-flex justify-content-end mb-3">
-          <RdsOffcanvas
-            canvasTitle={"NEW FORM"}
-            onclick={offCanvasHandler}
-            placement="end"
-            offcanvasbutton={
-              <div className="d-flex justify-content-end">
-                <RdsButton
-                  type={"button"}
-                  size="small"
-                  label="NEW FORM"
-                  icon="plus"
-                  iconColorVariant="light"
-                  iconFill={false}
-                  iconStroke={true}
-                  iconHeight="12px"
-                  iconWidth="12px"
-                  colorVariant="primary"
-                  class="me-2"
-                  showLoadingSpinner={true}
-                ></RdsButton>
-              </div>
-            }
-            backDrop={true}
-            scrolling={false}
-            preventEscapeKey={false}
-            offId="form-new-off"
-          >
-            <>
-              <RdsCompFormsBasic basicInfo={basicFormData} handleNewFormData={(data: any) => handleGetFormData(data)} />
-              <div className="footer-buttons my-2">
-                <div className="row">
-                  <div className="col-md-12 d-flex gap-3">
-                    <div>
-                      <RdsButton
-                        label="Cancel"
-                        type="button"
-                        colorVariant="primary"
-                        size="small"
-                        databsdismiss="offcanvas"
-                        isOutline={true}
-                      ></RdsButton>
-                    </div>
-                    <div>
-                      <RdsButton
-                        label="Save"
-                        type="button"
-                        size="small"
-                        isDisabled={saveNewFormData.title == ''}
-                        class=""
-                        colorVariant="primary"
-                        databsdismiss="offcanvas"
-                        showLoadingSpinner={true}
-                        onClick={() => handleNewFormData()}
-                      ></RdsButton>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          </RdsOffcanvas>
-
-        </div>
-
-        <div className="col-md-12 mb-3">
-          <div className="card p-2 h-100 d-flex justify-content-center align-items-center border-0 rounded-0 card-full-stretch">
-            <div>
-              <RdsCompDatatable
-               actionPosition="right"
-                tableHeaders={tableHeaders}
-                tableData={formsData}
-                actions={actions}
-                pagination={true}
-                recordsPerPage={5}
-                recordsPerPageSelectListOption={true}
-                onActionSelection={scopeSelection}
-              ></RdsCompDatatable>
-              <RdsOffcanvas
-                canvasTitle={"SEND FORM"}
+        <div className="col-md-8 d-flex justify-content-end my-1">
+        <RdsOffcanvas
+                canvasTitle={"NEW FORM"}
                 onclick={offCanvasHandler}
                 placement="end"
-                offcanvaswidth={650}
-                backDrop={false}
+                offcanvasbutton={
+                  <div className="d-flex justify-content-end">
+                    <RdsButton
+                      type={"button"}
+                      size="small"
+                      label="NEW FORM"
+                      icon="plus"
+                      iconColorVariant="light"
+                      iconFill={false}
+                      iconStroke={true}
+                      iconHeight="12px"
+                      iconWidth="12px"
+                      colorVariant="primary"
+                      class="me-2"
+                      showLoadingSpinner={true}
+                    ></RdsButton>
+                  </div>
+                }
+                backDrop={true}
                 scrolling={false}
                 preventEscapeKey={false}
-                offId="forms-send-offc"
+                offId="form-new-off"
               >
                 <>
-                  <div className="row">
-                    <RdsNavtabs
-                      navtabsItems={navtabsSendItems}
-                      type="tabs"
-                      isNextPressed={showNextSendTab}
-                      activeNavTabId={activeNavTabSendId}
-                      activeNavtabOrder={(activeNavTabSendId) => {
-                        setActiveNavTabSendId(activeNavTabSendId), setShowNextSendTab(false);
-                      }}
-                    />
-                    {activeNavTabSendId == 0 && showNextSendTab === false && (
-                      <>
+                  <RdsCompFormsBasic basicInfo={basicFormData} handleNewFormData={(data: any) => handleGetFormData(data)} />
+                  <div className="footer-buttons my-2">
+                    <div className="row">
+                      <div className="col-md-12 d-flex gap-3">
                         <div>
-                          <RdsCompFormsEmail formsEmailData={formsEmailData} handleSubmit={(data: any) => { handleEmailSubmit(data) }} ></RdsCompFormsEmail>
+                          <RdsButton
+                            label="Cancel"
+                            type="button"
+                            colorVariant="primary"
+                            size="small"
+                            databsdismiss="offcanvas"
+                            isOutline={true}
+                          ></RdsButton>
                         </div>
-                      </>
-                    )}
-                    {activeNavTabSendId == 1 && showNextSendTab === false && (
-                      <>
-                        <div className="row ps-2">
-                          <div>
-                            <RdsLabel label="Link"></RdsLabel>
-                          </div>
-                          <div className="input-group mb-3 mt-3">
-                            <RdsInput value={'http://localhost:8080/formsPreview/'+ tableRowId}></RdsInput>
-                            <div className="input-group-text" id="basic-addon12">
-                              <RdsIcon name={copybtn} height="20px" width="20px" fill={false} stroke={true} onClick={handleCopyLink} />
-                            </div>
-                          </div>
+                        <div>
+                          <RdsButton
+                            label="Save"
+                            type="button"
+                            size="small"
+                            isDisabled={saveNewFormData.title == ''}
+                            class=""
+                            colorVariant="primary"
+                            databsdismiss="offcanvas"
+                            showLoadingSpinner={true}
+                            onClick={() => handleNewFormData()}
+                          ></RdsButton>
                         </div>
-                      </>
-                    )}
+                      </div>
+                    </div>
                   </div>
                 </>
               </RdsOffcanvas>
-            </div>
-
-            <RdsCompAlertPopup messageAlert="Form will be deleted with all the questions in it, do you confirm?" alertID="form-delete-off" onSuccess={onDeleteHandler} />
-
-          </div>
         </div>
       </div>
-
-    </>
+    </div>
+    
+    <div className="col-md-12">
+      <div className="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+      <RdsCompDatatable
+                   actionPosition="right"
+                    tableHeaders={tableHeaders}
+                    tableData={formsData}
+                    actions={actions}
+                    pagination={true}
+                    recordsPerPage={5}
+                    recordsPerPageSelectListOption={true}
+                    onActionSelection={scopeSelection}
+                  ></RdsCompDatatable>
+          <RdsCompAlertPopup messageAlert="Form will be deleted with all the questions in it, do you confirm?" alertID="form-delete-off" onSuccess={onDeleteHandler} />
+    
+      </div>
+    </div>
+    <RdsCompDatatable
+                   actionPosition="right"
+                    tableHeaders={tableHeaders}
+                    tableData={formsData}
+                    actions={actions}
+                    pagination={true}
+                    recordsPerPage={5}
+                    recordsPerPageSelectListOption={true}
+                    onActionSelection={scopeSelection}
+                  ></RdsCompDatatable>
+                  <RdsOffcanvas
+                    canvasTitle={"SEND FORM"}
+                    onclick={offCanvasHandler}
+                    placement="end"
+                    offcanvaswidth={650}
+                    backDrop={false}
+                    scrolling={false}
+                    preventEscapeKey={false}
+                    offId="forms-send-offc"
+                  >
+                    <>
+                      <div className="row">
+                        <RdsNavtabs
+                          navtabsItems={navtabsSendItems}
+                          type="tabs"
+                          isNextPressed={showNextSendTab}
+                          activeNavTabId={activeNavTabSendId}
+                          activeNavtabOrder={(activeNavTabSendId) => {
+                            setActiveNavTabSendId(activeNavTabSendId), setShowNextSendTab(false);
+                          }}
+                        />
+                        {activeNavTabSendId == 0 && showNextSendTab === false && (
+                          <>
+                            <div>
+                              <RdsCompFormsEmail formsEmailData={formsEmailData} handleSubmit={(data: any) => { handleEmailSubmit(data) }} ></RdsCompFormsEmail>
+                            </div>
+                          </>
+                        )}
+                        {activeNavTabSendId == 1 && showNextSendTab === false && (
+                          <>
+                            <div className="row ps-2">
+                              <div>
+                                <RdsLabel label="Link"></RdsLabel>
+                              </div>
+                              <div className="input-group mb-3 mt-3">
+                                <RdsInput value={'http://localhost:8080/formsPreview/'+ tableRowId}></RdsInput>
+                                <div className="input-group-text" id="basic-addon12">
+                                  <RdsIcon name={copybtn} height="20px" width="20px" fill={false} stroke={true} onClick={handleCopyLink} />
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </>
+                  </RdsOffcanvas>
+    </div>
+    </div>
   );
 
 
