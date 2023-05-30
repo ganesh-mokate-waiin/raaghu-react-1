@@ -76,11 +76,14 @@ const RdsCompDatatable = (props: RdsCompDatatableProps) => {
   let sort: boolean;
   useEffect(() => {
     if (!sort) {
+      
       setData(props.tableData);
       let tempArray: boolean[] = [];
-      props?.tableData?.map(res => {
-        tempArray.push(false);
-      })
+      if (Array.isArray(props.tableData)) {
+        props.tableData.forEach(() => {
+          tempArray.push(false);
+        });
+      }
       setArray(tempArray);
     }
 

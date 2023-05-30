@@ -10,6 +10,8 @@ export interface TenantState {
   editTenant:any
   error: string | null;
   feature:any;
+  currentUser:any
+
 
 }
 
@@ -20,6 +22,8 @@ export const tenantInitialState: TenantState = {
   error: null,
   editTenant:null,
   feature:null,
+  currentUser:null
+  
 
 };
 
