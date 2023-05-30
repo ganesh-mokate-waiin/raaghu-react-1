@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import JSZip from "jszip";
 // import { useTranslation } from "react-i18next";
 import { RdsCompDatatable } from "../../../rds-components";
-import { RdsButton } from "../../../../../raaghu-elements/src";
+import { RdsButton, RdsIcon, RdsModal } from "../../../../../raaghu-elements/src";
 import { useAppDispatch, useAppSelector, } from "../../../../libs/state-management/hooks";
 import { RequestsData, deletePersonalData, downloadTokenPersonalData, getPersonalData, requestPersonalData, } from "../../../../libs/state-management/personal-data/personal-data-slice";
 
@@ -13,6 +13,9 @@ const PersonalData = (props: any) => {
     const [personalTableData, setPersonalTableData] = useState<any[]>([{}]);
     //const Data = useAppSelector((state) => state.persistedReducer.personalData) as any;
     const pData = useAppSelector((state) => state.persistedReducer.personalData);
+    const [personalDataSuccess, setPersonalDataSuccess] = useState(false);
+    const requestPersonalDataStatus = pData.status;
+
 
     const tableHeaders = [
         {
@@ -41,15 +44,15 @@ const PersonalData = (props: any) => {
     };
 
     const downloadTokenPersonalDataPayload = (id: any) => {
-        dispatch(downloadTokenPersonalData(id) as any).then((res:any)=>{
-            if (res){
-                const data= JSON.stringify(res);
+        dispatch(downloadTokenPersonalData(id) as any).then((res: any) => {
+            if (res) {
+                const data = JSON.stringify(res);
                 const zip = new JSZip();
                 zip.file("PersonalData.json", data)
-                zip.generateAsync({type:"blob"}).then(function(content:any){
-                    const url= window.URL.createObjectURL(content);
-                    const link= document.createElement("a");
-                    link.href= url;
+                zip.generateAsync({ type: "blob" }).then(function (content: any) {
+                    const url = window.URL.createObjectURL(content);
+                    const link = document.createElement("a");
+                    link.href = url;
                     link.setAttribute("download", "PersonalData.zip");
                     document.body.appendChild(link);
                     link.click();
@@ -60,13 +63,13 @@ const PersonalData = (props: any) => {
 
     }
 
-   
-  
+
+
     const Personalpayload = () => {
         const userId = localStorage.getItem("userId");
         dispatch(getPersonalData(userId) as any);
         if (pData.personalData) {
-            const personalDataTable = pData.personalData &&pData.personalData.items.map((dataPersonal: any) => {
+            const personalDataTable = pData.personalData && pData.personalData.items.map((dataPersonal: any) => {
                 const dateOne = new Date(dataPersonal.readyTime);
                 let dayOne = dateOne.getDate();
                 let monthOne = dateOne.getMonth() + 1;
@@ -104,7 +107,17 @@ const PersonalData = (props: any) => {
     }, [dispatch]);
 
     const handlerRequestData = () => {
-        dispatch(requestPersonalData() as any);
+        dispatch(requestPersonalData() as any)
+            .then((res: any) => {
+                if (res && requestPersonalDataStatus === "success") {
+                    setPersonalDataSuccess(true);
+                } else {
+                    setPersonalDataSuccess(false);
+                }
+            })
+            .catch(() => {
+                setPersonalDataSuccess(false);
+            });
     };
 
     const handlerDeletePersonalData = () => {
@@ -117,21 +130,90 @@ const PersonalData = (props: any) => {
 
             <div className="row align-items-center">
                 <div className="d-flex justify-content-end">
-                    <RdsButton
-                        icon="plus"
-                        label={("Request Peronal Data") || ""}
-                        iconColorVariant="light"
-                        iconHeight="15px"
-                        iconWidth="15px"
-                        iconFill={false}
-                        iconStroke={true}
-                        block={false}
-                        size="small"
-                        type="button"
-                        colorVariant="primary"
-                        onClick={handlerRequestData}
-                        class="mx-2"
-                    ></RdsButton>
+                    <RdsModal
+                        modalId="modal1"
+                        modalAnimation="modal fade"
+                        showModalFooter={false}
+                        showModalHeader={false}
+                        scrollable={false}
+                        verticallyCentered={true}
+                        modalbutton={<RdsButton
+                            icon="plus"
+                            label={("Request Peronal Data") || ""}
+                            iconColorVariant="light"
+                            iconHeight="15px"
+                            iconWidth="15px"
+                            iconFill={false}
+                            iconStroke={true}
+                            block={false}
+                            size="small"
+                            type="button"
+                            colorVariant="primary"
+                            onClick={handlerRequestData}
+                            class="mx-2"
+                        ></RdsButton>}
+                        cancelButtonName="OK"
+                    >
+                        <div>
+                            <div className="text-center">
+                                {!personalDataSuccess && (
+                                    <div className="container">
+                                        <div className="py-4">
+                                            <RdsIcon
+                                                width="80px"
+                                                height="80px"
+                                                name="close_circle"
+                                                colorVariant={"danger"}
+                                                stroke={true}
+                                            ></RdsIcon>
+                                        </div>
+                                        <div className="py-4 fs-5">
+                                            There is a personal data download request you have made before. You cannot make a new one until this request is fulfilled.
+                                        </div>
+                                        <br />
+                                        <div className="d-flex justify-content-center">
+                                            <RdsButton
+                                                class="me-2"
+                                                tooltipTitle={""}
+                                                type={"button"}
+                                                label="OK"
+                                                colorVariant="outline-primary"
+                                                size="small"
+                                                databsdismiss="modal"
+                                            ></RdsButton>
+                                        </div>
+                                    </div>
+                                )}
+                                {personalDataSuccess && (
+                                    <div className="container">
+                                        <div className="py-4">
+                                            <RdsIcon
+                                                width="80px"
+                                                height="80px"
+                                                name="tick_circle"
+                                                colorVariant={"success"}
+                                                stroke={true}
+                                            ></RdsIcon>
+                                        </div>
+                                        <div className="py-4 fs-5">
+                                            Your personal data request is being processed. You can download it from this page, once it's ready!
+                                        </div>
+                                        <div className="d-flex justify-content-center">
+                                            <RdsButton
+                                                class="me-2"
+                                                tooltipTitle={""}
+                                                type={"button"}
+                                                label="OK"
+                                                colorVariant="outline-primary"
+                                                size="small"
+                                                databsdismiss="modal"
+                                            ></RdsButton>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </RdsModal>
                     {/* <RdsButton
                         icon="plus"
                         label={("Delete Peronal Data") || ""}
@@ -150,7 +232,7 @@ const PersonalData = (props: any) => {
             </div>
             <div className="card p-2 h-100 border-0 rounded-0 card-full-stretch mt-3">
                 <RdsCompDatatable
-                 actionPosition="right"
+                    actionPosition="right"
                     tableHeaders={tableHeaders}
                     actions={actions}
                     tableData={personalTableData}

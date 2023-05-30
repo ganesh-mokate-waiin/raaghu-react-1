@@ -263,7 +263,7 @@ const ApiScope = () => {
             scrolling={false}
             offId="apiScope-edit-off"
             placement="end"
-            canvasTitle="Edit"
+            canvasTitle="Edit Scope"
             children={
               <RdsCompApiScopeBasicResource
                 onSuccess={handlerEditScope}
