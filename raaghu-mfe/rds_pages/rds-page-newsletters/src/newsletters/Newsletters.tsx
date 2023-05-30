@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import {
   RdsLabel,
   RdsSelectList,
-} from '../rds-elements';
+  RdsInputGroup
+} from 'raaghu-react-elements';
 import { RdsCompDatatable } from "../../../rds-components";
-import RdsInputGroup from "../../../../../raaghu-elements/src/rds-input-group";
 import {
   useAppDispatch,
   useAppSelector,

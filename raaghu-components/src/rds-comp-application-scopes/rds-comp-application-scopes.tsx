@@ -6,9 +6,7 @@ interface RdsCompApplicationScopesProps {
    scopesList: any[];
 }
 
-
 const RdsCompApplicationScopes = (props: RdsCompApplicationScopesProps) => {
-
    return (
       <>
          <div className="row">

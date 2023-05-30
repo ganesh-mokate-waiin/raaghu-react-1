@@ -1,5 +1,6 @@
 /* eslint-disable */
-import RdsCompApplicationScopes from './RdsCompApplicationScopes';
+import React from 'react';
+import RdsCompApplicationScopes from './rds-comp-application-scopes';
 
 export default {
   title: "RdsCompApplicationScopes",
