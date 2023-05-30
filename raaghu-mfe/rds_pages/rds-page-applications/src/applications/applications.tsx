@@ -223,7 +223,7 @@ const Applications = () => {
   const [permissionListData, setPermissionListData] = useState<any>([]);
   const [selectedPermissionListData, setSelectedPermissionListData] = useState<any>([]);
   // const offCanvasHandler = () => { };
-  const [activeNavTabEditId, setActiveNavTabEditId] = useState(0);
+  const [activeNavTabEditId, setActiveNavTabEditId] = useState("0");
 
   const [showNextTab, setShowNextTab] = useState(false);
   const typeList: any[] = [
@@ -335,10 +335,10 @@ const Applications = () => {
                     setActiveNavTabEditId(activeNavTabEditId), setShowNextTab(false);
                   }}
                 />
-                {activeNavTabEditId == 0 && showNextTab === false && (
+                {activeNavTabEditId === "0" && showNextTab === false && (
                   <RdsCompApplicationBasic handleSubmit={(editApplicationData: any) => { handleEditSubmit(editApplicationData) }} basicData={editApplicationData} typeList={typeList} scopesList={scopesListData} consentType={consentType} ></RdsCompApplicationBasic>
                 )}
-                {(activeNavTabEditId == 1 || showNextTab == true) && (
+                {(activeNavTabEditId === "1" || showNextTab == true) && (
                   <>
                     <RdsCompPermissionTree permissions={permissionListData} selectedPermissions={(SelectesPermission: any) => { SelectesPermissions(SelectesPermission) }}></RdsCompPermissionTree>
                     <div className="footer-buttons my-2">

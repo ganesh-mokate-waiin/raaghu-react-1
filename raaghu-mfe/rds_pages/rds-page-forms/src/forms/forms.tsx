@@ -158,7 +158,7 @@ const Forms = () => {
     { label: "Link", tablink: "#nav-link", id: 1 },
   ];
   const [showNextSendTab, setShowNextSendTab] = useState(false);
-  const [activeNavTabSendId, setActiveNavTabSendId] = useState(0);
+  const [activeNavTabSendId, setActiveNavTabSendId] = useState("0");
   const [copybtn, setCopyBtn] = useState("clipboard")
   function handleCopyLink(event: any) {
     const linkValueToCopy = event.target.baseURI;
@@ -289,14 +289,14 @@ const Forms = () => {
                         setActiveNavTabSendId(activeNavTabSendId), setShowNextSendTab(false);
                       }}
                     />
-                    {activeNavTabSendId == 0 && showNextSendTab === false && (
+                    {activeNavTabSendId === "0" && showNextSendTab === false && (
                       <>
                         <div>
                           <RdsCompFormsEmail formsEmailData={formsEmailData} handleSubmit={(data: any) => { handleEmailSubmit(data) }} ></RdsCompFormsEmail>
                         </div>
                       </>
                     )}
-                    {activeNavTabSendId == 1 && showNextSendTab === false && (
+                    {activeNavTabSendId === "1" && showNextSendTab === false && (
                       <>
                         <div className="row ps-2">
                           <div>

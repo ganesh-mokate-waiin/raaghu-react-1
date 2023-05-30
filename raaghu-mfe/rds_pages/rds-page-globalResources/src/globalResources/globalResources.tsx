@@ -12,7 +12,7 @@ const GlobalResources = () => {
   ];
 
   // use state
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [showTenantSettings, setShowTenantSettings] = useState(false);
   const [scriptStyleValue, setScriptStyleValue] = useState({ script: '', style: '' });
 
@@ -48,13 +48,13 @@ const GlobalResources = () => {
           />
           <div className="p-3 vh-75">
             <form>
-              {activeNavTabId == 0 && (
+              {activeNavTabId === "0" && (
                 <RdsCompSyntaxHighlighter value={scriptStyleValue.script} padding={10} style={{
         
                  
                 }} onValueChange={(value: any) => setScriptStyleValue({ ...scriptStyleValue, script: value })}></RdsCompSyntaxHighlighter>
               )}
-              {activeNavTabId == 1 && (
+              {activeNavTabId === "1" && (
                 <RdsCompSyntaxHighlighter value={scriptStyleValue.style} padding={10} style={{
                
                 }}

@@ -25,7 +25,7 @@ const navtabsItems = [
 ];
 
 const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [featureIdentitySettingsData, setfeatureIdentitySettingsData] = useState<any>(props.featureIdentitySettingsData1)
   const [a, setA] = useState(featureIdentitySettingsData[0].value)
   const twoFactChange = (event: any) => {
@@ -140,7 +140,7 @@ const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
       </div>
 
       <div className="col-xxl-9 col-xl-9 col-lg-9 col-12 pb-4">
-        {activeNavTabId == 0 && (
+        {activeNavTabId === "0" && (
           <>
             <form >
               <div className="text-muted pt-4 mb-2">
@@ -202,7 +202,7 @@ const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
             </form>
           </>
         )}
-        {activeNavTabId == 1 && (
+        {activeNavTabId === "1" && (
           <>
             <div className="col-md-12 mt-5">
               <RdsCheckbox
@@ -219,7 +219,7 @@ const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
             </h6>
           </>
         )}
-        {activeNavTabId == 2 && (
+        {activeNavTabId === "2" && (
           <>
             <div className="col-md-12 mt-5">
               <RdsCheckbox
@@ -236,7 +236,7 @@ const RdsCompFeatureManagement = (props: RdsCompFeatureManagementProps) => {
             </h6>
           </>
         )}
-        {activeNavTabId == 3 && (
+        {activeNavTabId === "3" && (
           <>
             <div className="col-md-12 mt-5">
               <RdsCheckbox

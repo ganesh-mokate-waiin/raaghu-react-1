@@ -213,7 +213,7 @@ const Auditpayload = ()=>{
     { label: "Actions", tablink: " #nav-action", id: 1 },
   ];
 
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [showAction, setShowAction] = useState(false);
 
   const handleSearch = (event: any) => {
@@ -400,14 +400,14 @@ const Auditpayload = ()=>{
                   setActiveNavTabId(activeNavTabId), setShowAction(false);
                 }}
               />
-              {activeNavTabId == 0 && showAction === false && (
+              {activeNavTabId === "0" && showAction === false && (
                 <ViewOperationLogsOffCanvas
                   selectedRowData={auditData.filter(
                     (item: any) => item.id == (tableDataRowid || 1)
                   )}
                 ></ViewOperationLogsOffCanvas>
               )}
-              {(activeNavTabId == 1 || showAction == true) && (
+              {(activeNavTabId === "1" || showAction == true) && (
                 <ActionOperationLogsOffCanvas
                   selectedRowData={auditData.filter(
                     (item: any) => item.id == (tableDataRowid || 1)

@@ -147,14 +147,14 @@ const FormsView = (props: any) => {
     { label: "Responses", tablink: "#nav-responses", id: 1 },
   ];
   const [showNextTab, setShowNextTab] = useState(false);
-  const [activeNavTabEditId, setActiveNavTabEditId] = useState(0);
+  const [activeNavTabEditId, setActiveNavTabEditId] = useState("0");
 
   const navtabsSendItems = [
     { label: "Email", tablink: "#nav-email", id: 0 },
     { label: "Link", tablink: "#nav-link", id: 1 },
   ];
   const [showNextSendTab, setShowNextSendTab] = useState(false);
-  const [activeNavTabSendId, setActiveNavTabSendId] = useState(0);
+  const [activeNavTabSendId, setActiveNavTabSendId] = useState("0");
   const [copybtn, setCopyBtn] = useState("clipboard")
   function handleCopyLink(event: any) {
 
@@ -249,14 +249,14 @@ const FormsView = (props: any) => {
                     setActiveNavTabSendId(activeNavTabSendId), setShowNextSendTab(false);
                   }}
                 />
-                {activeNavTabSendId == 0 && showNextSendTab === false && (
+                {activeNavTabSendId === "0" && showNextSendTab === false && (
                   <>
                     <div>
                       <RdsCompFormsEmail formsEmailData={formsEmailData} handleSubmit={(data: any) => { handleEmailSubmit(data) }} ></RdsCompFormsEmail>
                     </div>
                   </>
                 )}
-                {activeNavTabSendId == 1 && showNextSendTab === false && (
+                {activeNavTabSendId === "1" && showNextSendTab === false && (
                   <>
                     <div className="row ps-4">
                       <div>
@@ -367,7 +367,7 @@ const FormsView = (props: any) => {
                   setActiveNavTabEditId(activeNavTabEditId), setShowNextTab(false);
                 }}
               />
-              {activeNavTabEditId == 0 && showNextTab === false && (
+              {activeNavTabEditId === "0" && showNextTab === false && (
                 <>
                   <div>
                     <RdsCompQuestions basicEditFormData={basicEditFormData1} formQuestionsData={tempQuestionsData} getBasicEditDataFromQuestionComp={(data: any) => { getEditDataFromQuestionComponent(data) }} getQuestionsEditDataFromQuestionComp={(data: any) => { getQuestionsEditDataFromQuestionComp(data) }} deleteQuestion={(data: any) => { deleteQuestion(data) }}></RdsCompQuestions>
@@ -398,7 +398,7 @@ const FormsView = (props: any) => {
                   </div>
                 </>
               )}
-              {activeNavTabEditId == 1 && showNextTab === false && (
+              {activeNavTabEditId === "1" && showNextTab === false && (
                 <>
                   <RdsCompFormsResponse ></RdsCompFormsResponse>
                 </>)}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+  import React, { useState, useEffect } from "react";
 // import {configurationService,
 // localizationService,
 // sessionService,
@@ -142,7 +142,7 @@ const Tenant = (props: RdsPageTenantProps) => {
 
   };
   const [showTenantSettings, setShowTenantSettings] = useState(false);
-  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState(0);
+  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState("0");
   const [actionId, setActionId] = useState("new");
 
   const [emittedDataTenantData, setEmittedDataTenantData] = useState<any>([]);
@@ -484,7 +484,7 @@ const Tenant = (props: RdsPageTenantProps) => {
                       setShowTenantSettings(false);
                   }}
                 />
-                {activeNavTabIdEdit == 0 && showTenantSettings === false && (
+                {activeNavTabIdEdit === "0" && showTenantSettings === false && (
                   <div className="mt-3">
                     <RdsCompTenantInformation
                       editions={editionList}
@@ -497,7 +497,7 @@ const Tenant = (props: RdsPageTenantProps) => {
                     />
                   </div>
                 )}
-                {(activeNavTabIdEdit == 1 || showTenantSettings === true) && (
+                {(activeNavTabIdEdit === "1" || showTenantSettings === true) && (
                   <div className="mt-3">
                     <RdsCompFeatures
                       featuresData={featuresData}

@@ -42,7 +42,7 @@ const Polls = (props: any) => {
     { label: "Option", tablink: "#nav-optionEdit", id: 1 },
   ];
 
-  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState<any>(0);
+  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState<any>("0");
   const tableHeaders = [
     {
       displayName: "Question",
@@ -101,7 +101,7 @@ const Polls = (props: any) => {
     resultShowingEndDate: null,
   });
   const [Alert, setAlert] = useState({ show: false, message: "", color: "" });
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [getCreateNewPollsOptionData, setGetCreateNewPollsOptionData] = useState<any[]>([]);
  const [pollsOptionsData, setPollsOptionsData]= useState([])
  
@@ -389,7 +389,7 @@ const Polls = (props: any) => {
                 }}
                 justified={false}
               >
-                {activeNavTabId == 0 && (
+                {activeNavTabId === "0" && (
                   <RdsCompPollsQuestion
                     widgetList={[
                       { option: "a", value: "a" },
@@ -400,7 +400,7 @@ const Polls = (props: any) => {
                   ></RdsCompPollsQuestion>
                   
                 )}
-                {activeNavTabId == 1 && (
+                {activeNavTabId === "1" && (
                   <RdsCompPollsOption
                     optionsData={pollsOptionsData}
                     getPollsOptionData={getPollsOptionData}
@@ -470,7 +470,7 @@ const Polls = (props: any) => {
                 }}
                 justified={false}>
     
-                {activeNavTabIdEdit == 0 && (
+                {activeNavTabIdEdit === "0" && (
                   <RdsCompPollsQuestion
                     widgetList={[
                       { option: "a", value: "a" },
@@ -481,7 +481,7 @@ const Polls = (props: any) => {
                   ></RdsCompPollsQuestion>
                 )}
     
-                {activeNavTabIdEdit == 1 && (
+                {activeNavTabIdEdit === "1" && (
                   <>
                     <RdsCompPollsOption  optionsData={editPollsOptionData}  getPollsOptionData={getPollsEditOptionData}></RdsCompPollsOption>
                   </>

@@ -40,7 +40,7 @@ const navtabsItems = [
 ];
 const Settings = (props: RdsCompSettingsProps) => {
   const data = useAppSelector((state) => state.persistedReducer.settings);
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [emailSettings, setEmailSettings] = useState<any>({
     defaultFromDisplayName: "",
     defaultFromAddress: "",
@@ -276,7 +276,7 @@ const Settings = (props: RdsCompSettingsProps) => {
                 setActiveNavTabId(activeNavTabId);
               }}
             />
-            {activeNavTabId == 0 && (
+            {activeNavTabId === "0" && (
               <RdsCompEmail
                 handleSubmit={(formData: any) => {
                   handleEmailSubmit(formData);
@@ -285,7 +285,7 @@ const Settings = (props: RdsCompSettingsProps) => {
               />
             )}
 
-            {activeNavTabId == 1 && (
+            {activeNavTabId === "1" && (
               <RdsCompIdentityManagement
                 handleIdentity={(data: any) => {
                   saveIdentityData(data);
@@ -296,7 +296,7 @@ const Settings = (props: RdsCompSettingsProps) => {
                 userSettings={identitySettings.user}
               />
             )}
-            {activeNavTabId == 2 && (
+            {activeNavTabId === "2" && (
               <RdsCompAccount
                 versionList={[
                   { option: "2", value: 2 },
@@ -316,7 +316,7 @@ const Settings = (props: RdsCompSettingsProps) => {
                 }}
               />
             )}
-            {activeNavTabId == 3 && (
+            {activeNavTabId === "3" && (
               <RdsCompFeatureManagement
                 featureIdentitySettingsData1={featureIdentitySettingsData}
                 twoFactorList={[
