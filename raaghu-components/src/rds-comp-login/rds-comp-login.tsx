@@ -16,8 +16,8 @@ export interface RdsCompLoginProps {
   email: string;
   password: string;
   onDismissAlert?: () => any;
-  onEmailChange?:()=>any;
-  onPasswordChange?:()=>any;
+  onEmailChange?: () => any;
+  onPasswordChange?: () => any;
   onLogin: (email: string, password: string, rememberMe: boolean) => any;
   onForgotPassword: (isForgotPasswordClicked?: boolean) => void;
   onRegister: (isRegisterClicked?: boolean) => void;
@@ -25,7 +25,7 @@ export interface RdsCompLoginProps {
   validTenant: any;
 }
 
-const RdsCompLogin: React.FC<RdsCompLoginProps> = (
+const RdsCompLogin = (
   props: RdsCompLoginProps
 ) => {
   const [email, setEmail] = useState(props.email);
@@ -37,7 +37,7 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
   const [rememberMe, setrememberMe] = useState(false);
 
   useEffect(() => {
-    if(props.email){
+    if (props.email) {
       setEmail(props.email);
     }
   }, [props.email]);
@@ -48,10 +48,10 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
   }, [props.error]);
 
   useEffect(() => {
-    if(props.password){
+    if (props.password) {
       setPassword(props.password);
     }
-  
+
   }, [props.password]);
 
   useEffect(() => {
@@ -224,74 +224,74 @@ const RdsCompLogin: React.FC<RdsCompLoginProps> = (
               </div>
             )}
           </div>
-       
-            <div className="form-group text-start">
-              <RdsInput
-                label="Email/Username"
-                placeholder="Email/Username"
-                inputType="email/text"
-                onChange={emailhandleChange}
-                value={email}
-                name={"email"}
-                required={true}
-                dataTestId="username"
-              ></RdsInput>
-            </div>
 
-            <div className="form-group text-start ">
-              <RdsInput
-                required={true}
-                label="Password"
-                placeholder="Password"
-                inputType="password"
-                onChange={passwordhandleChange}
-                name={"password"}
-                value={password}
-                dataTestId="password"
-              ></RdsInput>
+          <div className="form-group text-start">
+            <RdsInput
+              label="Email/Username"
+              placeholder="Email/Username"
+              inputType="email/text"
+              onChange={emailhandleChange}
+              value={email}
+              name={"email"}
+              required={true}
+              dataTestId="username"
+            ></RdsInput>
+          </div>
+
+          <div className="form-group text-start ">
+            <RdsInput
+              required={true}
+              label="Password"
+              placeholder="Password"
+              inputType="password"
+              onChange={passwordhandleChange}
+              name={"password"}
+              value={password}
+              dataTestId="password"
+            ></RdsInput>
+          </div>
+          <div className="d-flex justify-content-between mt-2 mb-4">
+            <div>
+              <div className="form-group mb-3">
+                <RdsCheckbox
+                  label={"Remember me"}
+                  checked={rememberMe}
+                  onChange={onCheckedHandler}
+                  dataTestId="remember-me"
+                ></RdsCheckbox>
+              </div>
             </div>
-            <div className="d-flex justify-content-between mt-2 mb-4">
-              <div>
-                <div className="form-group mb-3">
-                  <RdsCheckbox
-                    label={"Remember me"}
-                    checked={rememberMe}
-                    onChange={onCheckedHandler}
-                    dataTestId="remember-me"
-                  ></RdsCheckbox>
-                </div>
-              </div>
-              <div>
-                <a
-                  className="link-primary text-decoration-none float-end"
-                  href="javascript:void(0)"
-                  onClick={forgotPasswordHandler}
-                >
-                  Forgot password ?
-                </a>
-              </div>
-            </div>     
-            <RdsButton
-              label="Login"
-              colorVariant="primary"
-              showLoadingSpinner={true}
-              isDisabled={!isFormValid}
-              block={true}
-              tooltipTitle={""}
-              // type="submit"
-              onClick={handleSubmit}
-              dataTestId="login"
-            />
-             <div className="mt-3">
-              <p>Don't Have An Account  <span><a
-                className="link-primary text-decoration-none"
+            <div>
+              <a
+                className="link-primary text-decoration-none float-end"
                 href="javascript:void(0)"
-                onClick={registerHandler}
+                onClick={forgotPasswordHandler}
               >
-                Register
-              </a></span></p>
+                Forgot password ?
+              </a>
             </div>
-   
+          </div>
+          <RdsButton
+            label="Login"
+            colorVariant="primary"
+            showLoadingSpinner={true}
+            isDisabled={!isFormValid}
+            block={true}
+            tooltipTitle={""}
+            // type="submit"
+            onClick={handleSubmit}
+            dataTestId="login"
+          />
+          <div className="mt-3">
+            <p>Don't Have An Account  <span><a
+              className="link-primary text-decoration-none"
+              href="javascript:void(0)"
+              onClick={registerHandler}
+            >
+              Register
+            </a></span></p>
+          </div>
+
           <div className="pt-2">
             <RdsLabel
               class="text-mute pt-2 secondary "
