@@ -21,7 +21,7 @@ export interface RdsCompEditionProps {
 const RdsCompEdition = (props: RdsCompEditionProps) => {
   const offCanvasHandler = () => { };
 
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
   const [showTenantSettings, setShowTenantSettings] = useState(false);
   const navtabsItems = [
     { label: "Basics", tablink: "#nav-home", id: 0 },
@@ -101,7 +101,7 @@ const RdsCompEdition = (props: RdsCompEditionProps) => {
                       setShowTenantSettings(false);
                   }}
                 />
-                {activeNavTabId == 0 && showTenantSettings === false && (
+                {activeNavTabId == "0" && showTenantSettings === false && (
                   <>
                     <div className="row mt-3">
                       <div className="col-md-6 sm-p-0">
@@ -149,7 +149,7 @@ const RdsCompEdition = (props: RdsCompEditionProps) => {
                     </div>
                   </>
                 )}
-                {(activeNavTabId == 1 || showTenantSettings == true) && (
+                {(activeNavTabId == "1" || showTenantSettings == true) && (
                   <>
                     {/* <RdsCompNewFeatures></RdsCompNewFeatures> */}
                   </>
