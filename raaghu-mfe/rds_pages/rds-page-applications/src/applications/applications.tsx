@@ -29,7 +29,7 @@ const Applications = () => {
   const [applicationId, setApplicationId] = useState("");
   const [permissionKeyName, setPermissionKeyName] = useState("");
   const [activeNavTabId, setActiveNavTabId] = useState();
-  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState<any>(0);
+  const [activeNavTabIdEdit, setActiveNavTabIdEdit] = useState<any>("0");
   const [editApplicationData, setEditApplicationData] = useState<any>({});
   const { t } = useTranslation();
   const [basicApplicationData, setBasicApplicationData] = useState<any>({
@@ -412,11 +412,11 @@ const Applications = () => {
                 }}
                 justified={false}
               >
-                {activeNavTabEditId == 0 &&
+                {activeNavTabEditId === "0" &&
                   <RdsCompApplicationBasic handleSubmit={(editApplicationData: any) => { handleEditSubmit(editApplicationData) }} basicData={editApplicationData} typeList={typeList} scopesList={scopesListData} consentType={consentType} ></RdsCompApplicationBasic>
                 }
 
-                {activeNavTabEditId == 1 && (
+                {activeNavTabEditId === "1" && (
                   <>
                     <RdsCompApplicationWorkflows consentType={consentType} basicData={editApplicationData} typeList={[]} scopesList={[]} handleSubmit={function (event: any): void {
                       throw new Error("Function not implemented.");
@@ -424,13 +424,13 @@ const Applications = () => {
                   </>
                 )}
 
-                {activeNavTabEditId == 2 && (
+                {activeNavTabEditId === "2" && (
                   <>
                     <RdsCompApplicationScopes scopesList={scopesListData}></RdsCompApplicationScopes>
                   </>
                 )}
 
-                {(activeNavTabEditId == 3 || showNextTab == true) && (
+                {(activeNavTabEditId === "3" || showNextTab == true) && (
                   <>
                     <RdsCompPermissionTree permissions={permissionListData} selectedPermissions={(SelectesPermission: any) => { SelectesPermissions(SelectesPermission) }}></RdsCompPermissionTree>
                     <div className="footer-buttons my-2">

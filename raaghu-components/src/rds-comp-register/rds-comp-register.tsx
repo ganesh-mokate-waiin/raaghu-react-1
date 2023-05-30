@@ -22,9 +22,7 @@ export interface RdsCompRegisterProps {
   validTenant: any;
 }
 
-const RdsCompRegister: React.FC<RdsCompRegisterProps> = (
-  props: RdsCompRegisterProps
-) => {
+const RdsCompRegister = (props: RdsCompRegisterProps) => {
 
   const navigate = useNavigate();
 
