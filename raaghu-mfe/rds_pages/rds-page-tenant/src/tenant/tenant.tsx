@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import {configurationService,
+import {configurationService,
 // localizationService,
 // sessionService,
-// impersonateService
-// } from "raaghu-react-core";
+impersonateService
+ } from "raaghu-react-core";
 import {
   createTenant,
   deleteTenant,
@@ -33,6 +33,7 @@ import {
 } from "../../../rds-elements";
 import RdsCompFeatures from "../../../../../raaghu-components/src/rds-comp-new-features/rds-comp-new-features";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 interface RdsPageTenantProps { }
 
@@ -48,7 +49,7 @@ const Tenant = (props: RdsPageTenantProps) => {
   const [Alert, setAlert] = useState({ show: false, message: "", color: "" });
   const data = useAppSelector((state) => state.persistedReducer.tenant);
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   const [featuresData, setFeaturesData] = useState<any>([]);
   const dispatch = useAppDispatch();
   const [tableData, setTableData] = useState<any>([]);
@@ -146,6 +147,7 @@ const Tenant = (props: RdsPageTenantProps) => {
   const [actionId, setActionId] = useState("new");
 
   const [emittedDataTenantData, setEmittedDataTenantData] = useState<any>([]);
+  const[impersonateTenant, setimpersonanteTenant]=useState<any>([])
 
   async function loginAsTenant(tenantId:any,tenantUserName:any) {
     const url = "https://raaghu-react.azurewebsites.net/connect/token";
@@ -170,13 +172,38 @@ const Tenant = (props: RdsPageTenantProps) => {
       },
       body: params,
     });
+
     const data = await response.json();
     return data;
-
-    // const impersonateTenant= impersonateService(accessToken)
-
   }
 
+  
+useEffect(()=>{
+  
+  let API_URL = "https://raaghu-react.azurewebsites.net"
+  const token=sessionStorage.getItem("accessToken")
+  if (token){
+    impersonateService(API_URL).then ((result:any)=>{
+       
+      //  const apb= result.currentUser
+      // const impersonateToken=result.currentUser.map((item:any)=>{
+      //   return{
+      //   impersonatorUserId:item.impersonatorUserId,
+      //   impersonatorUserName:item.impersonatorUserName,
+
+      //   }
+      // })
+      // setimpersonanteTenant(impersonateToken)
+      const impersonanteUserId= sessionStorage.getItem('impersonateUserId');
+      const impersonateUserName= sessionStorage .getItem('impersonateUserName')
+
+      if (impersonanteUserId && impersonateUserName){
+        navigate("/dashboard")
+      }
+
+    })
+  }
+})
  
   useEffect(() => {
     dispatch(fetchTenant() as any);

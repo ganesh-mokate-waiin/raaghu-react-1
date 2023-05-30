@@ -37,7 +37,7 @@ export interface OrganizationTreeProps {
 }
 const OrganizationTree = (props: OrganizationTreeProps) => {
   const dispatch = useAppDispatch();
-    const offCanvasHandler = () => {};
+  const offCanvasHandler = () => {};
   const [activeTab, setActiveTab] = useState("member");
   const [treeData, setTreeData] = useState<any>([]);
   const [user, setUser] = useState<any>({
@@ -377,8 +377,8 @@ const OrganizationTree = (props: OrganizationTreeProps) => {
                         type="button"
                         data-bs-dismiss="offcanvas"
                         databstoggle="offcanvas"
-                        databstarget="#addRoleOff"
-                        ariacontrols="addRoleOff"
+                        databstarget="#oRole-add-off"
+                        ariacontrols="oRole-add-off"
                         showLoadingSpinner={true}
                         onClick={() => {
                           dispatch(FetchRoleListOrganizationUnit() as any);
