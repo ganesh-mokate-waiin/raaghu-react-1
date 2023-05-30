@@ -21,6 +21,7 @@ export * from './polls/polls-slice';
 export * from './newsletters/newsletters-slice';
 export * from "./menus/menus-slice";
 export * from "./roles/roles-slice";
-export * from "./Blogs/blogs-slice"
+export * from "./Blogs/blogs-slice";
+export * from "./logout/logout-slice"
 
 
