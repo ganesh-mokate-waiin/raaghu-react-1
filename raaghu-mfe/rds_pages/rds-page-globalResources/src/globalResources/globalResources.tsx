@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../libs/state-management/hooks";
 import { RdsButton, RdsNavtabs } from "../../../rds-elements";
-import { RdsCompSyntaxHighlighter } from "../../../rds-components";
+import { RdsCompSyntaxHighlighter, RdsCompCodeMirror } from "../../../rds-components";
 import { getGlobalResources, saveGlobalResources } from "../../../../libs/state-management/global-resources/globalResources-slice";
 
 const GlobalResources = () => {
@@ -12,10 +12,9 @@ const GlobalResources = () => {
   ];
 
   // use state
-  const [activeNavTabId, setActiveNavTabId] = useState("0");
+  const [activeNavTabId, setActiveNavTabId] = useState(0);
   const [showTenantSettings, setShowTenantSettings] = useState(false);
   const [scriptStyleValue, setScriptStyleValue] = useState({ script: '', style: '' });
-
   // dispatch and selector
   const dispatch = useAppDispatch();
   const globalResources = useAppSelector((state) => state.persistedReducer.globalResources);
@@ -25,15 +24,21 @@ const GlobalResources = () => {
   }, [dispatch])
 
   useEffect(() => {
-    if (globalResources.globalResources) setScriptStyleValue({ script: globalResources.globalResources.scriptContent, style: globalResources.globalResources.styleContent });
-  }, [globalResources.globalResources])
+    if(globalResources.globalResources) {
+      setScriptStyleValue({ script: globalResources.globalResources.scriptContent, style: globalResources.globalResources.styleContent });
+  }}, [globalResources.globalResources])
 
   // functions
   function onSaveFn(event: any) {
     event.preventDefault();
     dispatch(saveGlobalResources({ body: scriptStyleValue }));
   }
-
+ const handlercodeChangesScript =(editor:any, data:any, value:any)=>{
+  setScriptStyleValue({ ...scriptStyleValue, script: value })
+ }
+ const handlercodeChangesStyle =(editor:any, data:any, value:any)=>{
+  setScriptStyleValue({ ...scriptStyleValue, style: value })
+ }
   // DOM
   return (
     <>
@@ -42,29 +47,21 @@ const GlobalResources = () => {
           <div className="card p-2 h-100 border-0 rounded-0 card-full-stretch">
           <RdsNavtabs navtabsItems={navtabsItems} type="tabs" isNextPressed={showTenantSettings} activeNavTabId={activeNavTabId}
             activeNavtabOrder={(activeNavTabId) => {
-              setActiveNavTabId(activeNavTabId),
+              setActiveNavTabId(activeNavTabId)
                 setShowTenantSettings(false);
             }}
           />
           <div className="p-3 vh-75">
-            <form>
-              {activeNavTabId === "0" && (
-                <RdsCompSyntaxHighlighter value={scriptStyleValue.script} padding={10} style={{
-        
-                 
-                }} onValueChange={(value: any) => setScriptStyleValue({ ...scriptStyleValue, script: value })}></RdsCompSyntaxHighlighter>
-              )}
-              {activeNavTabId === "1" && (
-                <RdsCompSyntaxHighlighter value={scriptStyleValue.style} padding={10} style={{
-               
-                }}
-                  onValueChange={(value: any) => setScriptStyleValue({ ...scriptStyleValue, style: value })}></RdsCompSyntaxHighlighter>
-              )}
+              {activeNavTabId == 0 && (
+                  <RdsCompCodeMirror onBeforeChange={handlercodeChangesScript} code= {scriptStyleValue.script}></RdsCompCodeMirror>
+                )}
+              {activeNavTabId == 1 && (
+                <RdsCompCodeMirror onBeforeChange={handlercodeChangesStyle} code={scriptStyleValue.style}></RdsCompCodeMirror>
+               )}
               <div className="d-flex footer-buttons mb-3 justify-content-end pt-3">
                 <RdsButton type={"submit"} colorVariant="primary" label={'Save Changes'}
                   onClick={onSaveFn} ></RdsButton>
               </div>
-            </form>
           </div>
         </div>
       </div>
