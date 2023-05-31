@@ -351,7 +351,7 @@ const Edition = (props: RdsPageEditionProps) => {
             }}
           />
           {activeEditNavTabId == "0" && showNextEdtiTab === false && (
-            <div className="pt-3 mt-3 ps-2 pe-2">
+            <div className="pt-3 ps-2 pe-2">
               <RdsInput
                 size="medium"
                 inputType="text"

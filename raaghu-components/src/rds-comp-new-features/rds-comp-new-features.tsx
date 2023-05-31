@@ -18,7 +18,7 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
 
   const [navtabsItems, setNavtabsItems] = useState<any[]>(props.featuresData);
   const [navtabs, setNavtabs] = useState(props.featuresData.map((x: any, i: number) => ({ ...x, id: i, label: x.displayName, tablink: '#' + `${x.name}` })));
-  const [activeNavTabId, setActiveNavTabId] = useState(0);
+  const [activeNavTabId, setActiveNavTabId] = useState("0");
 
   useEffect(() => {
     const navtabData: any[] = [];
@@ -59,7 +59,7 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
   }
 
   return (
-    <div className="row">
+    <div className="row mt-3">
       <div className="col-md-6">
         <RdsNavtabs navtabsItems={navtabs} type="vertical" fill={false} justified={false} activeNavTabId={activeNavTabId}
           activeNavtabOrder={(activeNavTabId) => { setActiveNavTabId(activeNavTabId); }} />
