@@ -380,6 +380,8 @@ const Language = (props: LanguageProps) => {
                 onActionSelection={onActionSelection}
                 recordsPerPage={10}
                 recordsPerPageSelectListOption={true}
+                noDataTitle={"There is no languages available, Click on New Scopes to add."}
+                noDataheaderTitle={"No Languages Available."}
               ></RdsCompDatatable>
               <RdsOffcanvas
                 placement={"end"}

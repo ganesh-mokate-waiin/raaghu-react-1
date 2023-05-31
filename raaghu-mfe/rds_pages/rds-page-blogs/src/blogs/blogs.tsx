@@ -311,6 +311,8 @@ const Blogs = (props: RdsPageResourcesProps) => {
               recordsPerPage={10}
               recordsPerPageSelectListOption={true}
               onActionSelection={handlerActionSelection}
+              noDataTitle={"There is no blogs available, Click on New Blogs to add."}
+              noDataheaderTitle={"No Blogs Available."}
             ></RdsCompDatatable>
             <RdsOffcanvas
               backDrop={true}

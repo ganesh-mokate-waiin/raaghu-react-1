@@ -325,6 +325,8 @@ const Edition = (props: RdsPageEditionProps) => {
           recordsPerPage={10}
           onActionSelection={onActionSelection}
           recordsPerPageSelectListOption={true}
+          noDataTitle={"There is no editions available, Click on New Edition to add."}
+          noDataheaderTitle={"No Edition Available"}
         ></RdsCompDatatable>
         <RdsCompAlertPopup
           alertID="edition-delete-offc"
@@ -350,8 +352,8 @@ const Edition = (props: RdsPageEditionProps) => {
                 setShowNextEditTab(false);
             }}
           />
-          {activeEditNavTabId == "0" && showNextEdtiTab === false && (
-            <div className="pt-3 ps-2 pe-2">
+          {activeEditNavTabId === "0" && showNextEdtiTab === false && (
+            <div className="pt-3 mt-3 ps-2 pe-2">
               <RdsInput
                 size="medium"
                 inputType="text"
@@ -368,7 +370,7 @@ const Edition = (props: RdsPageEditionProps) => {
               
             </div>
           )}
-          {(activeEditNavTabId == "1" || showNextEdtiTab == true) && (
+          {(activeEditNavTabId === "1" || showNextEdtiTab == true) && (
             <>
               <RdsCompFeatures
                 featuresData={featureIdentitySettingsData}

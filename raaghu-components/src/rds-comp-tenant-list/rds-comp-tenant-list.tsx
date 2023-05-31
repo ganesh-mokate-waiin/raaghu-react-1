@@ -37,6 +37,8 @@ const RdsCompEditionList = (props: RdsCompEditionListProps) => {
       recordsPerPage={props.recordsPerPage}
       onActionSelection={props.onActionSelection!}
       recordsPerPageSelectListOption={props.recordsPerPageSelectListOption}
+      noDataTitle={"No Tenants Available"}
+
     ></RdsCompDatatable>
   );
 };

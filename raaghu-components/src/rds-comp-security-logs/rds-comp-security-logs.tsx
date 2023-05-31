@@ -38,6 +38,7 @@ const RdsCompSecurityLogs = (props: RdsCompSecurityLogsProps) => {
               pagination={props.pagination!}
               recordsPerPage={props.recordsPerPage}
               recordsPerPageSelectListOption={props.recordsPerPageSelectListOption}
+              
             ></RdsCompDatatable>
           </div>
         </div>

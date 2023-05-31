@@ -112,7 +112,7 @@ const RdsCompAdminDashboard = () => {
 						<div>
 							<RdsButtonGroup
 								buttonGroupItems={buttonGroupList}
-
+							
 								colorVariant="primary"
 								isOutline={true}
 								role="radio"
@@ -886,7 +886,7 @@ const RdsCompAdminDashboard = () => {
 					>
 						<div className="table-responsive">
 							<RdsTable
-								tableHeightForScroll="306px"
+								tableHeightForScroll="356px"
 								
 								headerDatas={[
 									{
@@ -1116,16 +1116,51 @@ const RdsCompAdminDashboard = () => {
 											</div>
 										),
 									},
+									,
+									{
+										id: 20,
+										cases: (
+											<div className="d-flex align-items-center justify-content-start">
+												<div className="text-muted"> 13 </div>
+											</div>
+										),
+										member: (
+											<div className="d-flex align-items-center gap-2">
+												<div>
+													{" "}
+													<img
+														src="./assets/dashboard-data.png"
+														width="40px\"
+													/>
+												</div>
+												<div className="">
+													<p className="mb-0">
+														<b>Kath</b>
+													</p>
+													<small className="text-muted">Manager </small>
+												</div>
+											</div>
+										),
+										active: (
+											<div className="d-flex align-items-center justify-content-start">
+												<div className="text-muted"> 10 </div>
+											</div>
+										),
+										closed: (
+											<div className="d-flex align-items-center justify-content-start">
+												<div className="text-muted"> 3 </div>
+											</div>
+										),
+										rate: (
+											<div className="MidRate text-success d-flex align-items-center justify-content-start">
+												52%
+											</div>
+										),
+									},
 								]}
 							></RdsTable>
 						</div>
-						<RdsPagination
-							totalRecords={10}
-							size="sm"
-							alignmentType="end"
-							recordsPerPage={10}
-							paginationType="advance"
-						></RdsPagination>
+						
 					</RdsWidget>
 				</div>
 			</div>
