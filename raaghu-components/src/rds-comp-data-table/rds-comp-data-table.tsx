@@ -14,6 +14,7 @@ import "./rds-comp-data-table.css";
 export interface RdsCompDatatableProps {
   enablecheckboxselection?: boolean;
   noDataTitle?: string,
+  noDataheaderTitle?:string,
   classes?: string;
   swapRows?: any
   isSwap?: any
@@ -76,14 +77,11 @@ const RdsCompDatatable = (props: RdsCompDatatableProps) => {
   let sort: boolean;
   useEffect(() => {
     if (!sort) {
-      
       setData(props.tableData);
       let tempArray: boolean[] = [];
-      if (Array.isArray(props.tableData)) {
-        props.tableData.forEach(() => {
-          tempArray.push(false);
-        });
-      }
+      props?.tableData?.map(res => {
+        tempArray.push(false);
+      })
       setArray(tempArray);
     }
 
@@ -287,9 +285,10 @@ const RdsCompDatatable = (props: RdsCompDatatableProps) => {
     <>
       {data?.length == 0 && (
         <div className="h-100 d-flex align-items-center justify-content-center">
-          <RdsIllustration
-            label={props.noDataTitle} 
-            //subLabel="Click on the button above to add."
+          <RdsIllustration           
+            label={props.noDataheaderTitle}
+            subLabel={props.noDataTitle} 
+            colorVariant="light"
           />
         </div>
       )}

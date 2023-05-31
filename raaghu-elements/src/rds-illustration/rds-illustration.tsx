@@ -23,9 +23,9 @@ const RdsIllustration = (props: RdsIllustrationProps) => {
             colorVariant="light"
           ></RdsIcon>
           <h5 data-testid="labelElement" >
-            <label className="mt-4 opacity-50 text-muted" >{props.label}</label>
+            <label className="mt-4" >{props.label}</label>
           </h5>
-          <div data-testid="sublabelElement" className="mt-2 opacity-25">{props.subLabel}</div>
+          <div data-testid="sublabelElement" className="mt-2 text-muted">{props.subLabel}</div>
         </div>
 
       </div>

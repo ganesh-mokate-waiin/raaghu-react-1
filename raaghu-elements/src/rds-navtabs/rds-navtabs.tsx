@@ -19,7 +19,7 @@ export interface RdsNavtabsProps {
   justified?: boolean;
   activeNavtabOrder?: (id: any) => void;
   //Addded isNextPressed and activeNavTabId prop for changing active tab in page when next is pressed.
-  activeNavTabId?: string;
+  activeNavTabId?: number;
   isNextPressed?: boolean;
   onClick?: React.MouseEvent<HTMLElement>;
 }
@@ -49,7 +49,7 @@ const RdsNavtabs = (props: RdsNavtabsProps) => {
               
             ? "flex-lg-row flex-md-row flex-xl-row flex-xxl-row justify-content-start nav-tabs pb-0 pb-lg-0 pb-md-0 pb-xl-0 pb-xxl-0"
             : props.type === "vertical"
-            ? " flex-column nav-pills col-12 h-100 border-end border-end bs-md-0"
+            ? " flex-column nav-pills col-12 h-100 border-end border-end border-light bs-md-0"
             : " nav-tabs") +
           (props.fill ? " nav-fill" : "") +
           (props.justified ? " nav-justified" : "")
