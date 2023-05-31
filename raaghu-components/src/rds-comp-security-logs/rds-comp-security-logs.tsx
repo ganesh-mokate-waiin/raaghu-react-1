@@ -38,7 +38,7 @@ const RdsCompSecurityLogs = (props: RdsCompSecurityLogsProps) => {
               pagination={props.pagination!}
               recordsPerPage={props.recordsPerPage}
               recordsPerPageSelectListOption={props.recordsPerPageSelectListOption}
-              noDataheaderTitle={"No security Logs Available"}
+              
             ></RdsCompDatatable>
           </div>
         </div>
