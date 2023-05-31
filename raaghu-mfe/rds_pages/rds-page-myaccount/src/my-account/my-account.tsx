@@ -6,14 +6,14 @@ import { changepasswordProfile, fetchMyProfile, getProfilePicture, saveMyProfile
 
 
  const navtabsItems = [
-    { label: "Profile Picture", tablink: "#nav-profile_picture", id: 0 },
-    { label: "Change password", tablink: "#nav-change_password", id: 1 },
-    { label: "Personal Info", tablink: "#nav-personal_info", id: 2 },
-    { label: "Two factor", tablink: "#nav-two_Factor", id: 3 },
+    { label: "Profile Picture", tablink: "#nav-profile_picture", id: "0" },
+    { label: "Change password", tablink: "#nav-change_password", id: "1" },
+    { label: "Personal Info", tablink: "#nav-personal_info", id: "2" },
+    { label: "Two factor", tablink: "#nav-two_Factor", id: "3" },
   ];
 
  const MyAccount = (props:any) => { 
-    const [activeNavTabId, setActiveNavTabId] = useState(0);
+    const [activeNavTabId, setActiveNavTabId] = useState("0");
     const data = useAppSelector((state) => state.persistedReducer.myaccount);
     const [twoFactorData,setFormData] = useState(false);
 
@@ -184,14 +184,14 @@ import { changepasswordProfile, fetchMyProfile, getProfilePicture, saveMyProfile
                         }}  
                         />   
                     </div> 
-                    {activeNavTabId === 0 && (
+                                        {activeNavTabId == "0" && (
                         <RdsCompProfilePicture
                         handleProfileDataSubmit={submitProfilePic}
                             postProfilePic={postProfilePic}
                             profilePictureData={convertedImage}
                             profilePicture={profilePicture}></RdsCompProfilePicture>
                     )}
-                    {activeNavTabId === 1 && (
+                    {activeNavTabId == "1" && (
                         <RdsCompChangePassword
                         handlePasswordDataSubmit={(formData: any) => {
                             handlePasswordDataSubmit(formData);
@@ -199,7 +199,7 @@ import { changepasswordProfile, fetchMyProfile, getProfilePicture, saveMyProfile
                             changePasswordData={changePasswordData}>                            
                         </RdsCompChangePassword>
                     )} 
-                    {activeNavTabId === 2 && (
+                    {activeNavTabId == "2" && (
                         <RdsCompPersonalInfo
                         handlePersonalDataSubmit={(formData: any) => {
                             handlePersonalInfoSubmit(formData);
@@ -210,7 +210,7 @@ import { changepasswordProfile, fetchMyProfile, getProfilePicture, saveMyProfile
                         personalInfo={personalInfo}></RdsCompPersonalInfo>
                         
                     )}
-                    {activeNavTabId === 3 && (
+                    {activeNavTabId == "3" && (
                         <>
                          <div className="mt-4 py-4">
                             <RdsCheckbox
