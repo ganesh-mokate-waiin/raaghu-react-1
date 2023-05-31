@@ -21,18 +21,19 @@ const RdsCompMenuDirectory = (props: RdsCompMenuDirectoryProps) => {
 
   const renderDirectoryItem = (item: any) => (
     <>
-      <div key={item.data.id} className="d-flex align-items-center ">
+      <div key={item.data.id} className="d-flex align-items-center mb-3">
         {item?.children?.length != 0 && (
           <button
             className=" me-1 border-0 bg-white"
             onClick={handleClick(item.data.id)}
           >
             <RdsIcon
-              name={expandedItems.includes(item.data.id) ? "minus" : "plus"}
-              height="15px"
-              width="15px"
+              name={expandedItems.includes(item.data.id) ? "chevron_up" : "chevron_down"}
+              height="8px"
+              width="12px"
               fill={false}
               stroke={true}
+              colorVariant="primary"
               onClick={handleClick(item.data.id)}
             />
           </button>
@@ -40,11 +41,11 @@ const RdsCompMenuDirectory = (props: RdsCompMenuDirectoryProps) => {
         <span className="mx-1">
           <RdsIcon
             name="folder"
-            height="15px"
-            width="15px"
+            height="17px"
+            width="20px"
             fill={false}
             stroke={true}
-            colorVariant="undefined"
+            colorVariant="primary"
             onClick={handleClick(item.data.id)}
           />
         </span>
