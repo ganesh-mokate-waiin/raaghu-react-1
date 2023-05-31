@@ -77,7 +77,7 @@ setdata({
 						onChange={emailhandleChange}
 						value = {data.email}
 						name = {'email'}
-                        
+                        dataTestId="name"
 				></RdsInput>
 				   
 				</div>
@@ -91,6 +91,7 @@ setdata({
                         required={false}
 						name = {'Displayname'}
 						value = {data.fullname}
+						dataTestId="display-name"
 					></RdsInput>
 				
 				</div>
@@ -103,7 +104,7 @@ setdata({
 					    onChange = {messagehandleChange}
 						rows ={2}
 						value = {data.message}
-
+						dataTestId="desc"
 					/>                                                      
 				</div>
 				<div className=" mb-4">
@@ -113,7 +114,7 @@ setdata({
 					    onChange = {resourcehadleChange}
 						rows ={3}
 						value = {data.resource}
-
+						dataTestId="resources"
 					/>                                                      
 				</div>
            <div >
@@ -129,6 +130,7 @@ setdata({
 							colorVariant="outline-primary"
 							size="small"
 							databsdismiss="offcanvas"
+							dataTestId="cancel"
 						></RdsButton>
 						<RdsButton
 							class="me-2"
@@ -140,6 +142,7 @@ setdata({
 							databsdismiss="offcanvas"
 							onClick={()=>props.onSuccess(data)}
 							isDisabled={!isFormValid}
+							dataTestId="save"
 						></RdsButton>
 					</div>
 			</form>
