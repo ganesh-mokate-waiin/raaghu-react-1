@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
-// import 'codemirror/lib/codemirror.css'; // Import CodeMirror CSS
-// import 'codemirror/theme/monokai.css'; // Import theme CSS
-// import 'codemirror/mode/javascript/javascript'; // Import JavaScript mode
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/monokai.css';
+import 'codemirror/mode/javascript/javascript';
 
 // import { Controlled as CodeMirror } from 'react-codemirror2'; // Import the React wrapper for CodeMirror
 
