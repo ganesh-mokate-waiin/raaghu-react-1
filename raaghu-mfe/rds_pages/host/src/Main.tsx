@@ -466,13 +466,10 @@ const Main = (props: MainProps) => {
   const displayName = getLabelForPath(currentPath, sideNavItems);
   const subTitle = getSubTitle(displayName, sideNavItems);
   const [currentTitle, setCurrentTitle] = useState(displayName);
-  const [currentSubTitle, setCurrentSubTitle] = useState(subTitle);
   const [breacrumItem, setBreadCrumItem] = useState<any[]>([]);
 
   const sideNavOnClickHandler = (e: any) => {
     const pageName = e.target.getAttribute("data-name");
-    const subTitle = getSubTitle(pageName, sideNavItems);
-    setCurrentSubTitle(subTitle);
     document.title = `raaghu-${pageName.toLowerCase()}`;
     setCurrentTitle(pageName);
     let a = recursiveFunction(concatenatedExtended, pageName);
@@ -533,41 +530,6 @@ const Main = (props: MainProps) => {
       setCurrentTitle(breadcrumData[breadcrumData.length - 1].label);
     }
   }
-
-  // useEffect(() => {
-  //    localizationService("en-GB").then((resp: any) => {
-  //     let data2 = {};
-  //     const translation = resp?.resources;
-  //     if (translation) {
-  //       Object.keys(translation).forEach((key) => {
-  //         Object.keys(translation[key].texts).forEach((k1) => {
-  //           let k2 = k1.replace(/[^\w\s]/gi, "_");
-  //           let value1 = translation[key].texts[k1];
-  //           data2 = { ...data2, [k2]: value1 };
-  //         });
-  //       });
-  //       i18n.addResourceBundle(
-  //         currentLanguage,
-  //         "translation",
-  //         data2,
-  //         false,
-  //         true
-  //       );
-  //       i18n.changeLanguage(currentLanguage);
-  //       showBreadCrum();
-  //     }
-  //   });
-  // }, []);
-
-
-
-  // useEffect(() => {
-  //   configurationService(currentLanguage).then(async (res: any) => {
-  //     if (res.currentUser.id) {
-  //       localStorage.setItem("userId", res.currentUser.id);
-  //     }
-  //   });
-  // }, []);
 
   useEffect(() => {
     if (dataHost && dataHost.email != "" && dataHost.password != "") {
@@ -685,6 +647,13 @@ const Main = (props: MainProps) => {
 
   let logo = "./assets/raaghu_logs.png";
   document.documentElement.setAttribute("theme", themes);
+
+  const handlerLogoClick =()=>{
+    navigate("/raaghu-dashboard")
+    setCurrentTitle("Dashboard")
+    setBreadCrumItem([])
+  }
+  
   return (
     <Suspense>
       <Routes>
@@ -716,7 +685,7 @@ const Main = (props: MainProps) => {
                     <div className="d-flex flex-column-fluid align-items-stretch container-fluid px-0">
                       <div className="aside ng-tns-c99-0" id="aside">
                         <div
-                          onClick={() => navigate("/raaghu-dashboard")}
+                          onClick={handlerLogoClick}
                           id="raaghuLogo"
                         >
                           <img
@@ -756,7 +725,6 @@ const Main = (props: MainProps) => {
                             // toggleTheme={toggleTheme}
                             themeItems={themeItems}
                             navbarTitle={t(currentTitle) || ""}
-                            navbarSubTitle={t(currentSubTitle) || ""}
                             onChatClickHandler={() => {}}
                             toggleItems={[]}
                             elementList={[]}
