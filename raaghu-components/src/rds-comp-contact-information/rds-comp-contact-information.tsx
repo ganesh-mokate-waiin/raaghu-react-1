@@ -69,7 +69,7 @@ const RdsCompContactInformation = (props: RdsCompContactInfoProps) => {
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="contact-info-form">
           <div className="mt-1 mb-3">
             <RdsLabel
               label="Email Address"
@@ -82,6 +82,7 @@ const RdsCompContactInformation = (props: RdsCompContactInfoProps) => {
               onChange={emailhandleChange}
               value={user.email}
               name={"email"}
+              dataTestId="email"
             ></RdsInput>
             {error.email != "" && (
               <span className="text-danger">{error.email}</span>
@@ -100,6 +101,7 @@ const RdsCompContactInformation = (props: RdsCompContactInfoProps) => {
               onChange={contacthandleChange}
               name={"fullname"}
               value={user.contact}
+              dataTestId="contact-number"
             ></RdsInput>
             {error.contact != "" && (
               <span className="text-danger">{error.contact}</span>
@@ -113,6 +115,7 @@ const RdsCompContactInformation = (props: RdsCompContactInfoProps) => {
               checked={user.checked}
               id="flexCheckDefault"
               onChange={checkedHandeler}
+              data-testid="terms-and-condition"
             />
             <label className="form-check-label" htmlFor="flexCheckDefault">
               I have read the terms and conditions and agree to the sale of my
@@ -126,6 +129,7 @@ const RdsCompContactInformation = (props: RdsCompContactInfoProps) => {
             block={true}
             tooltipTitle={""}
             type="submit"
+            dataTestId="continue"
           />
         </form>
       </div>
