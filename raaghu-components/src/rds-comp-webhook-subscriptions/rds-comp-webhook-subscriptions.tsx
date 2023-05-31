@@ -163,6 +163,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
               onChange={endpointhandleChange}
               value={user.endpoint}
               name={"endpoint"}
+              dataTestId="webhook-endpoint"
             ></RdsInput>
             {error.endpoint && (
               <span className="text-danger">{error.endpoint}</span>
@@ -176,6 +177,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
               onChange={eventhandleChange}
               rows={4}
               value={user.event}
+              dataTestId="webhook-event"
             />
             {error.event && <span className="text-danger">{error.event}</span>}
           </div>
@@ -189,6 +191,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
                 onChange={headerKeyhandleChange}
                 name={"headerKey"}
                 value={user.headerKey}
+                dataTestId="header-key"
               ></RdsInput>
               {error.headerKey && (
                 <span className="text-danger">{error.headerKey}</span>
@@ -201,6 +204,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
                 onChange={headerValuehandleChange}
                 name={"headerValue"}
                 value={user.headerValue}
+                dataTestId="header-value"
               ></RdsInput>
               {error.headerValue && (
                 <span className="text-danger">{error.headerValue}</span>
@@ -215,6 +219,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
                 block={true}
                 tooltipTitle={""}
                 type="submit"
+                dataTestId="add"
               />
             </div>
           </div>
@@ -252,6 +257,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
                 type="button"
                 size="small"
                 isOutline={true}
+                dataTestId="cancel"
               />
             </div>
             <div className="col-2">
@@ -263,6 +269,7 @@ const RdsCompWebhookSubscription = (props: RdsCompWebhookSubscriptionProps) => {
                 tooltipTitle={""}
                 type="submit"
                 size="small"
+                dataTestId="save"
               />
             </div>
           </div>

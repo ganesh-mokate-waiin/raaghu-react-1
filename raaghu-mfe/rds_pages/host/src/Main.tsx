@@ -155,7 +155,8 @@ const Main = (props: MainProps) => {
       accesstokenexpired =  Date.now() - new Date(loginAccessDate).getTime();
       console.log("accesstokenexpired", parseInt(expirationTime)*1000,accesstokenexpired, Date.now(),new Date(loginAccessDate).getTime())
 
-      if (sessionStorage.getItem("auth") && (  parseInt(expirationTime)*1000 > accesstokenexpired) ) {
+      if (localStorage.getItem("auth") && (  parseInt(expirationTime)*1000 > accesstokenexpired) ) {
+        setauth(true)
         if (currentPath !== "/raaghu-dashboard" && currentPath !== "/") {
           navigate(currentPath);
         } else {
