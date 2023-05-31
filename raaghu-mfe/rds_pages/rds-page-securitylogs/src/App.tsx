@@ -223,7 +223,7 @@ const SecurityLogsPage = () => {
               colorVariant="primary"
               label="Download"
               isOutline={false}
-              icon="export_data"
+              icon="download"
               iconHeight="15px"
               size="small"
               iconFill={false}
