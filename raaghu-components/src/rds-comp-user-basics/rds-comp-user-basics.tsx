@@ -62,7 +62,7 @@ const RdsCompUserBasics = (props: RdsCompUserBasicsProps) => {
     //setUserData({...userData, roleNames:[value]})
   }
   function handletwoFactorEnable(event: any) {
-    //setUserData({...userData, twoFactorEnabled:event.target.checked})
+    setUserData({...userData, twoFactorEnabled:event.target.checked})
   }
   function handleIsActive(event: any) {
     setUserData({ ...userData, isActive: event.target.checked })

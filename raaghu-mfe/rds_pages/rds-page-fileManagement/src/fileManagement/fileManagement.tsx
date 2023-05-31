@@ -145,7 +145,7 @@ const FileManagement = () => {
         setAlert({
           ...Alert,
           show: true,
-          message: "Directory desctiptor updated Successfully",
+          message: "Directory updated Successfully",
           color: "success",
         });
       }
@@ -191,7 +191,7 @@ const FileManagement = () => {
         setAlert({
           ...Alert,
           show: true,
-          message: "Directory desctiptor added Successfully",
+          message: "Directory added Successfully",
           color: "success",
         });
       }
@@ -233,7 +233,7 @@ const FileManagement = () => {
           setAlert({
             ...Alert,
             show: true,
-            message: "Directory desctiptor moved Successfully",
+            message: "Directory moved Successfully",
             color: "success",
           });
         }
@@ -253,7 +253,7 @@ const FileManagement = () => {
           setAlert({
             ...Alert,
             show: true,
-            message: "File desctiptor moved Successfully",
+            message: "File moved Successfully",
             color: "success",
           });
         }
@@ -370,7 +370,7 @@ const FileManagement = () => {
         setAlert({
           ...Alert,
           show: true,
-          message: "File desctiptor added Successfully",
+          message: "File added Successfully",
           color: "success",
         });
       }
@@ -405,7 +405,7 @@ const FileManagement = () => {
             setAlert({
               ...Alert,
               show: true,
-              message: "Directory desctiptor deleted Successfully",
+              message: "Directory deleted Successfully",
               color: "success",
             });
           }
@@ -426,7 +426,7 @@ const FileManagement = () => {
           setAlert({
             ...Alert,
             show: true,
-            message: "File desctiptor deleted Successfully",
+            message: "File deleted Successfully",
             color: "success",
           });
         }
@@ -499,7 +499,7 @@ const FileManagement = () => {
           setAlert({
             ...Alert,
             show: true,
-            message: "File desctiptor deleted Successfully",
+            message: "File deleted Successfully",
             color: "success",
           });
         }
