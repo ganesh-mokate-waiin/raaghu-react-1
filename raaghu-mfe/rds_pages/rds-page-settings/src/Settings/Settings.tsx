@@ -31,7 +31,7 @@ import {
 } from "../../../../libs/state-management/settings/settings-slice";
 import { useTranslation } from "react-i18next";
 
-interface RdsCompSettingsProps {}
+interface RdsCompSettingsProps { }
 const navtabsItems = [
   { label: "Email Settings", tablink: "#nav-home", id: 0 },
   { label: "Identity Management", tablink: "#nav-profile", id: 1 },
@@ -148,7 +148,7 @@ const Settings = (props: RdsCompSettingsProps) => {
   }
 
   useEffect(() => {
-    
+
     dispatch(fetchEmailSettings() as any);
 
     dispatch(fetchIdentitySettings() as any);
@@ -245,12 +245,12 @@ const Settings = (props: RdsCompSettingsProps) => {
   }, [data.featureIdentitySettings]);
 
   function saveFeature(data: any) {
-    
-    const tempData :any[] = []
-    data.map((e:any) => {
+
+    const tempData: any[] = []
+    data.map((e: any) => {
       const item = {
-        value : String(e.value),
-        name : e.name
+        value: String(e.value),
+        name: e.name
       }
       tempData.push(item);
     })
@@ -258,7 +258,7 @@ const Settings = (props: RdsCompSettingsProps) => {
   }
 
   function restoreFeatures(data: any) {
-    
+
     dispatch(restoreToDefaultFeaturesSettings(data) as any).then((res: any) => {
       dispatch(fetchFeaturesSettings() as any);
     });
@@ -274,18 +274,17 @@ const Settings = (props: RdsCompSettingsProps) => {
               type="tabs"
               activeNavtabOrder={(activeNavTabId) => {
                 setActiveNavTabId(activeNavTabId);
-              }}
-            />
-            {activeNavTabId === "0" && (
+              }}>
+            </RdsNavtabs>
+            {activeNavTabId == "0" && (
               <RdsCompEmail
                 handleSubmit={(formData: any) => {
                   handleEmailSubmit(formData);
                 }}
-                emailSettings={emailSettings}
-              />
+                emailSettings={emailSettings}>
+              </RdsCompEmail>
             )}
-
-            {activeNavTabId === "1" && (
+            {activeNavTabId == "1" && (
               <RdsCompIdentityManagement
                 handleIdentity={(data: any) => {
                   saveIdentityData(data);
@@ -294,9 +293,9 @@ const Settings = (props: RdsCompSettingsProps) => {
                 passwordSettings={identitySettings.password}
                 signSettings={identitySettings.signIn}
                 userSettings={identitySettings.user}
-              />
+              ></RdsCompIdentityManagement>
             )}
-            {activeNavTabId === "2" && (
+            {activeNavTabId == "2" && (
               <RdsCompAccount
                 versionList={[
                   { option: "2", value: 2 },
@@ -314,9 +313,9 @@ const Settings = (props: RdsCompSettingsProps) => {
                 handleAccountSettings={(data: any) => {
                   saveAccountData(data);
                 }}
-              />
+              ></RdsCompAccount>
             )}
-            {activeNavTabId === "3" && (
+            {activeNavTabId == "3" && (
               <RdsCompFeatureManagement
                 featureIdentitySettingsData1={featureIdentitySettingsData}
                 twoFactorList={[
@@ -326,7 +325,7 @@ const Settings = (props: RdsCompSettingsProps) => {
                 ]}
                 saveFeature={saveFeature}
                 restoreFeatures={restoreFeatures}
-              />
+              ></RdsCompFeatureManagement>
             )}
           </div>
         </div>
