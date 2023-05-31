@@ -176,7 +176,7 @@ const MainMenu = [
     "children": [
       {
         "key": "6-0-0",
-        "label": "Plans",
+        "label": "Payment Plans",
         "icon": "bullet",
         "path": "/raaghu-PaymentPlans",
         "subTitle": "Payment Plans",
