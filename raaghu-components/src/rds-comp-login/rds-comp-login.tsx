@@ -252,7 +252,7 @@ const RdsCompLogin = (
               dataTestId="password"
             ></RdsInput>
           </div>
-          <div className="d-flex justify-content-between mt-2 mb-4">
+          <div className="d-flex justify-content-between mb-4">
             <div>
               <div className="form-group mb-3">
                 <RdsCheckbox

@@ -97,7 +97,7 @@ const RdsCompNewMenu = (props: RdsCompNewMenuProps) => {
         </div>
         <div className="col-md-12 mb-3">
           <RdsInput
-            label="Icon"
+            label="Element ID"
             value={data.elementId}
             placeholder="enter element Id"
             name="elementId"
