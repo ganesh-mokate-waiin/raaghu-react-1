@@ -215,20 +215,27 @@ useEffect(()=>{
 
       const tempData = data.tenants.map((tenant: any) => {
         let status = "";
+        let badgeColorVariant = "";
         if (tenant.activationState === 1) {
           status = "Active";
+          badgeColorVariant = "success";
         }
         else if (tenant.activationState === 2 && tenant.editionEndDateUtc !== null) {
           status = "Active with limited time";
+          badgeColorVariant = "warning";
         }
         else {
           status = "Inactive";
+          badgeColorVariant = "primary";
         }
         return {
           id: tenant.id,
           tenant:tenant.name,
           editionName: tenant.editionName,
-          status: status,
+          status: {
+            badgeColorVariant: badgeColorVariant,
+            content: status
+          },
           expiry: tenant.editionEndDateUtc,
         };
       });
