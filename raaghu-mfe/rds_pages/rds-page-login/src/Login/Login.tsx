@@ -150,7 +150,7 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <div className="login-background">
-      <div className="align-items-center d-flex justify-content-center vh-100 m-auto login-container">
+      <div className="align-items-center d-flex justify-content-center vh-100 m-auto login-container login">
         <div className="container-fluid m-2">
           <div className="bg-white row rounded-3 ">
             <div className="col-md-6">

@@ -61,7 +61,7 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
   return (
     <div className="row mt-3">
       <div className="col-md-6">
-        <RdsNavtabs navtabsItems={navtabs} type="vertical" fill={false} justified={false} activeNavTabId={activeNavTabId}
+        <RdsNavtabs navtabsItems={navtabs} type="vertical" fill={false} justified={false} 
           activeNavtabOrder={(activeNavTabId) => { setActiveNavTabId(activeNavTabId); }} />
       </div>
       <div className="col-md-6">

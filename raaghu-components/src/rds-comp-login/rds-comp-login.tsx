@@ -213,7 +213,7 @@ const RdsCompLogin = (
           </small>
         </div>
         <div>
-          <div className="invalid-popup mb-2 pb-1">
+          <div className="invalid-popup mb-1">
             {Alert.show && (
               <div>
                 <RdsAlert
@@ -252,7 +252,7 @@ const RdsCompLogin = (
               dataTestId="password"
             ></RdsInput>
           </div>
-          <div className="d-flex justify-content-between mb-4">
+          <div className="d-flex justify-content-between mt-2 mb-0">
             <div>
               <div className="form-group mb-3">
                 <RdsCheckbox
@@ -292,9 +292,7 @@ const RdsCompLogin = (
               onClick={registerHandler}
             >
               {t('Register')}
-
             </a></span></p>
-            
           </div>
 
           <div className="pt-2">
