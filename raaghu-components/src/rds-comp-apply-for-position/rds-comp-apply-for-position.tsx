@@ -134,6 +134,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
               value={user.email}
               name={"email"}
               required 
+              dataTestId="email"
             ></RdsInput>
             {error.email !="" && <span className="text-danger">{error.email}</span>}
           </div>
@@ -147,6 +148,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
               name={"fullName"}
               value={user.fullName}
               required
+              dataTestId="full-name"
             ></RdsInput>
             {error.fullName && (
               <span className="text-danger">{error.fullName}</span>
@@ -162,6 +164,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
               onChange={contactNumberhandleChange}
               value={user.contactNumber}
               name={"contactNumber"}
+              dataTestId="contact-number"
               required
             ></RdsInput>
             {error.contactNumber && (
@@ -178,6 +181,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
               name={"position"}
               value={user.position}
               required
+              dataTestId="position-name"
             ></RdsInput>
             {error.position && (
               <span className="text-danger">{error.position}</span>
@@ -195,6 +199,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
                 value={user.period}
                 name={"period"}
                 required
+                dataTestId="notice-period"
               ></RdsInput>
               {error.period && (
                 <span className="text-danger">{error.period}</span>
@@ -218,7 +223,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
 
           <div className="col-md-6  col-sm-12">
           <RdsLabel label="Cover Letter" fontWeight="600" />
-            <RdsTextArea placeholder="Cover Letter.." rows={6}/>
+            <RdsTextArea placeholder="Cover Letter.." rows={6} dataTestId="cover-letter"/>
           </div>
         </div>
 
@@ -231,6 +236,7 @@ const RdsCompApplyForPosition = (props: RdsCompApplyForPositionProps) => {
               block={true}
               tooltipTitle={""}
               type="submit"
+              dataTestId="apply-now"
             />
           </div>
         </div>

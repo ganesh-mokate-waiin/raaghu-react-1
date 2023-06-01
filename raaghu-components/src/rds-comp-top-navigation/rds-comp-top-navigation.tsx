@@ -18,7 +18,6 @@ export interface RdsCompTopNavigationProps {
   elementList: any[];
   componentsList: any[];
   navbarTitle?: string;
-  navbarSubTitle?: string;
   brandName?: string;
   profileTitle?: string;
   profileName?: string;

@@ -59,7 +59,7 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
   }
 
   return (
-    <div className="row">
+    <div className="row mt-3">
       <div className="col-md-6">
         <RdsNavtabs navtabsItems={navtabs} type="vertical" fill={false} justified={false} 
           activeNavtabOrder={(activeNavTabId) => { setActiveNavTabId(activeNavTabId); }} />
@@ -67,8 +67,9 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
       <div className="col-md-6">
         {navtabsItems.map((tabsData: any, mainIndex: number) => (
           <>
-            {activeNavTabId === mainIndex.toString() && (
+            {activeNavTabId == mainIndex.toString() && (
               <>
+                <RdsLabel label={tabsData.label} size="16px" class="mb-2" />
                 {tabsData.features.map((feature: any) => (
                   <>
                     {
@@ -76,21 +77,21 @@ const RdsCompFeatures = (props: RdsCompFeatureProps) => {
                         <div className="form-group mb-2">
                           <RdsSelectList label={feature.displayName} selectItems={feature.valueType?.itemSource?.items?.map((x: any) => ({ ...x, option: x.value }))}
                             onSelectListChange={(e: any) => onChangeFn(e, feature)}></RdsSelectList>
-                          <div>{feature.description}</div>
+                          <div className="fs-7 text-muted">{feature.description}</div>
                         </div>
                       ) :
                         feature.valueType.validator.name === 'NUMERIC' ? (
                           <div className="form-group mb-2">
-                            <RdsInput inputType={'number'} name={feature.name} value={feature.value}
+                            <RdsInput inputType={'number'} label={feature.displayName} name={feature.name} value={feature.value}
                               onChange={(e: any) => onChangeFn(e.target.value, feature)}></RdsInput>
-                            <div>{feature.description}</div>
+                            <div className="fs-7 text-muted">{feature.description}</div>
                           </div>
                         ) :
                           feature.valueType.validator.name === 'BOOLEAN' ? (
                             <div className="form-group mb-2">
                               <RdsCheckbox label={feature.displayName} checked={feature.value}
                                 name={feature.name} onChange={(e: any) => onChangeFn(e.target.checked, feature)}></RdsCheckbox>
-                              <div>{feature.description}</div>
+                              <div className="fs-7 text-muted">{feature.description}</div>
                             </div>
                           ) : null
                     }

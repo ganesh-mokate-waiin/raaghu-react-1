@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import RdsCompLogin from "../../../../../raaghu-components/src/rds-comp-login/rds-comp-login";
+import {RdsCompLogin} from "../../../rds-components";
 import {
   useAppDispatch,
   useAppSelector,

@@ -79,3 +79,4 @@ export { default as RdsCompCharts } from "./rds-comp-charts";
 export { default as RdsCompApplicationWorkflows } from "./rds-comp-application-workflows";
 export { default as RdsCompApplicationScopes } from "./rds-comp-application-scopes";
 export { default as RdsCompRegister } from "./rds-comp-register";
+export { default as RdsCompCodeMirror } from "./rds-comp-code-mirror"

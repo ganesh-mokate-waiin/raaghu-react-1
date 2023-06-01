@@ -119,6 +119,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      name="title"
                      placeholder="Enter Title"
                      onChange={(e:any)=>onTitleChangeHandler(e.target.value)}
+                     dataTestId='title'
                   ></RdsInput>
                </div>
                <div className="form-group">
@@ -129,6 +130,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      name="slug"
                      value={postData.slug}
                      placeholder="Enter Slug"
+                     dataTestId='slug'
                      onChange={(e:any)=>onSlugChangedHandler(e.target.value)}
                   ></RdsInput>
                </div>
@@ -141,6 +143,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      value={postData.concurrentMode}
                      placeholder=""
                      onChange={(e:any)=>ConcurrencyStampupdate(e.target.value)}
+                     dataTestId='concurrency-stamp'
                   ></RdsInput>
                </div>}
                <div className="form-group">
@@ -150,6 +153,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      onChange={(e:any)=>onDecChangedHandler(e.target.value)}
                      value={postData.description}
                      rows={3}
+                     dataTestId='shord-desc'
                   />
                </div>
                <div className="form-group pt-4">
@@ -163,6 +167,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      value={postData.tag}
                      placeholder="Enter Tag"
                      onChange={(e:any)=>onTagChangedHandler(e.target.value)}
+                     dataTestId='tag'
                   ></RdsInput>
                </div>
                </form>
@@ -178,6 +183,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
 							databsdismiss="offcanvas"
 							databstoggle="offcanvas"
 							databstarget="#application"
+                     dataTestId='save'
 						></RdsButton>
 						<RdsButton
 							class="me-2"
@@ -191,6 +197,7 @@ const RdsCompBlogPostNew = (props: RdsCompBlogPostNewProps) => {
                      onClick={() => {
                         props.onSubmit(postData);
                       }}
+                      dataTestId='submit'
 						></RdsButton>
 					</div>
          </div>

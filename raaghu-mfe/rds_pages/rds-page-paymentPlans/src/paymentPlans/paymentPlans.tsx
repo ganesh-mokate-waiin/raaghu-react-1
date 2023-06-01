@@ -37,7 +37,7 @@ const PaymentPlans = () => {
   ]);
   const [plansTableData, setPlansTableData] = useState([]);
   const [gatewayTableData, setGatewayTableData] = useState([]);
-  const [canvasTitle, setCanvasTitle] = useState("Create New Payment Plans");
+  const [canvasTitle, setCanvasTitle] = useState("New Payment Plans");
   const [paymentPlansObj, setPaymentPlansObj] = useState({
     id: "",
     name: "",
@@ -143,7 +143,7 @@ const tableHeadersGatewayPlans = [
     setIsEdit(false);
     setPaymentPlansObj({ id: "", name: "", concurrencyStamp: "" });
     setGatewayPlansObj({ planId: "", gateway: "", externalId: "" });
-    setCanvasTitle(managePlan ? "Create New Plan" : "Create New Gateway Plan");
+    setCanvasTitle(managePlan ? "New Plan" : "New Gateway Plan");
   }
 
   // On action selection from data table
@@ -391,8 +391,8 @@ const tableHeadersGatewayPlans = [
                         icon="plus"
                         label={
                           managePlan
-                            ? "Create New Plan"
-                            : "Create New Gateway Plan"
+                            ? "New Plan"
+                            : "New Gateway Plan"
                         }
                         iconColorVariant="light"
                         iconHeight="12px"
@@ -482,8 +482,8 @@ const tableHeadersGatewayPlans = [
                       <RdsButton
                         class="me-2"
                         label={
-                          canvasTitle === "Create New Plan" ||
-                          canvasTitle === "Create New Gateway Plan"
+                          canvasTitle === "New Plan" ||
+                          canvasTitle === "New Gateway Plan"
                             ? "Save"
                             : "Update"
                         }
