@@ -933,7 +933,7 @@ const Users = () => {
          
         </RdsNavtabs>
 
-        <div className="footer-buttons justify-content-end bottom-0 pt-0">
+        <div className="footer-buttons d-flex bottom-0 pt-0">
           <RdsButton
             class="me-2"
             label="CANCEL"

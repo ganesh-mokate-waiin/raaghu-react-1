@@ -83,6 +83,7 @@
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "bootstrap": "^5.2.3",
+    "codemirror": "^5.52.2",
     "prismjs": "^1.29.0",
     "raaghu-react-elements": "^1.0.1",
     "react-codemirror2": "^7.2.1",

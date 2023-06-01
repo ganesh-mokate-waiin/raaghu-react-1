@@ -95,7 +95,7 @@ const RdsCompLogin = (
   const isFormValid = isPasswordValid(password) && isEmailValid(email);
 
   const handleSubmit: any = (event: any) => {
-    // event.preventDefault();
+    event.preventDefault();
     props.onLogin(email, password, rememberMe);
     // setEmail("");
     // setPassword("");
@@ -224,7 +224,7 @@ const RdsCompLogin = (
               </div>
             )}
           </div>
-
+          <form onSubmit={handleSubmit}>
           <div className="form-group text-start">
             <RdsInput
               label="Email/Username"
@@ -278,10 +278,11 @@ const RdsCompLogin = (
             isDisabled={!isFormValid}
             block={true}
             tooltipTitle={""}
-            // type="submit"
-            onClick={handleSubmit}
+            type="submit"
+            // onClick={handleSubmit}
             dataTestId="login"
           />
+          </form>
           <div className="mt-3">
             <p>Don't Have An Account  <span><a
               className="link-primary text-decoration-none"
@@ -290,6 +291,7 @@ const RdsCompLogin = (
             >
               Register
             </a></span></p>
+            
           </div>
 
           <div className="pt-2">

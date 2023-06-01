@@ -32,6 +32,7 @@ const RdsCompBilling = (props: RdsCompBillingProp) => {
                 block={false}
                 tooltipTitle={""}
                 type="submit"
+                dataTestId="download-all"
               />
             </div>
           </div>
