@@ -115,6 +115,7 @@ const Pages = (props: any) => {
 
   useEffect(() => {
     if (pageDatas) {
+      
       const pagesDataTable = pageDatas?.map((dataPages: any) => {
         const date = new Date(dataPages.creationTime);
         let day = date.getDate();

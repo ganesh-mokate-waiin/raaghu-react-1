@@ -4,7 +4,7 @@ import {
   RdsLabel,
   RdsSelectList,
   RdsInputGroup
-} from 'raaghu-react-elements';
+} from '../../../rds-elements';
 import { RdsCompDatatable } from "../../../rds-components";
 import {
   useAppDispatch,
@@ -15,9 +15,11 @@ import {
   GetAllNewsLetters, preferencesData
 } from "../../../../libs/state-management/newsletters/newsletters-slice";
 
-const Newsletters = (props: any) => {
-   const dispatch = useAppDispatch();
-   const newsletters = useAppSelector((state) => state.persistedReducer.newsletters);
+export interface RdsPageNewsLetterProps{}
+
+const Newsletters = (props: RdsPageNewsLetterProps) => {
+  const dispatch = useAppDispatch();
+  const newsletters = useAppSelector((state) => state.persistedReducer.newsletters);
   const [NewsLetterData, setNewsLetterData] = useState({
     preference: "",
   });
