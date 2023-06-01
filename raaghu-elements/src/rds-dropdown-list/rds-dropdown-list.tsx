@@ -142,9 +142,9 @@ const RdsDropdownList = (props: RdsDropdownListProps) => {
 
 
   return (
-    <div className="dropdown-raaghu w-100 position-relative dropdown" ref={dropdownRef}>
+    <div className="dropdown-raaghu w-100 position-relative" ref={dropdownRef}>
       <span
-        className="dropdown-raaghu-button cursor-pointer dropdown-toggle"
+        className="dropdown-raaghu-button cursor-pointer"
         onClick={clickedOnDropDown}
       >      
         <div
