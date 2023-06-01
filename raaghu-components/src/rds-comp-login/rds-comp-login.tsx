@@ -10,6 +10,7 @@ import {
 import "./rds-comp-login.css";
 import { useNavigate } from "react-router-dom";
 import { use } from "i18next";
+import { Translation, useTranslation } from "react-i18next";
 export interface RdsCompLoginProps {
   error?: any;
   getvalidTenantName: string;
@@ -35,6 +36,7 @@ const RdsCompLogin = (
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
   const [isRegisterClicked, setIsRegisterClicked] = useState(false);
   const [rememberMe, setrememberMe] = useState(false);
+  const { t,i18n } = useTranslation();
 
   useEffect(() => {
     if (props.email) {
@@ -121,13 +123,13 @@ const RdsCompLogin = (
     <div>
       <div className="text-center">
         <h2>
-          <b> Login </b>
+          <b> {t('Login')}  </b>
         </h2>
         <div className="pb-1">
           <small className="pb-2 d-flex justify-content-center">
             <RdsLabel
-              label={`current tenant:` + props.getvalidTenantName}
-            ></RdsLabel>
+              label={`${t('current tenant')}:` + props.getvalidTenantName}
+              ></RdsLabel>
             <span className="ms-1">
               <RdsModal
                 modalId="modal1"
@@ -136,8 +138,8 @@ const RdsCompLogin = (
                 showModalHeader={true}
                 scrollable={false}
                 verticallyCentered={false}
-                modalbutton={<a className="link-primary"> (Change)</a>}
-                modalTitle="Switch Tenant"
+                modalbutton={<a className="link-primary">{t('Change')}</a>}
+                modalTitle={`${t('Switch Tenant')}`}
                 // saveChangesName={`${
                 //   checked ? "SWITCH TO THE TENANT" : "SWITCH TO THE HOST"
                 // }`}
@@ -158,7 +160,7 @@ const RdsCompLogin = (
                     >
                       Switch to tenant
                     </label> */}
-                    <RdsCheckbox label={`${checked ? "Switch to the Tenant" : "Switch to the Host"
+                    <RdsCheckbox label={`${checked ? t('Switch to the Tenant') : t("Switch to the Host")
                       }`}
                       checked={checked} isSwitch={checked}
                       onChange={() => setChecked(!checked)}
@@ -166,7 +168,7 @@ const RdsCompLogin = (
                     ></RdsCheckbox>
                   </div>
                   <RdsInput
-                    label="Tenancy Name"
+                    label={`${'Tenancy Name'}`}
                     placeholder="Tenancy Name"
                     inputType="email/text"
                     onChange={TenancyNameChange}
@@ -191,7 +193,7 @@ const RdsCompLogin = (
                   <RdsButton
                     class="me-2"
                     label={
-                      checked ? "SWITCH TO THE TENANT" : "SWITCH TO THE HOST"
+                      checked ? 'SWITCH TO THE TENANT' : "SWITCH TO THE HOST"
                     }
                     size="small"
                     isDisabled={false}
@@ -211,7 +213,7 @@ const RdsCompLogin = (
           </small>
         </div>
         <div>
-          <div className="invalid-popup mb-2 pb-1">
+          <div className="invalid-popup mb-1">
             {Alert.show && (
               <div>
                 <RdsAlert
@@ -227,7 +229,7 @@ const RdsCompLogin = (
           <form onSubmit={handleSubmit}>
           <div className="form-group text-start">
             <RdsInput
-              label="Email/Username"
+              label={`${t('Email')}/${t('Username')}`}
               placeholder="Email/Username"
               inputType="email/text"
               onChange={emailhandleChange}
@@ -241,7 +243,7 @@ const RdsCompLogin = (
           <div className="form-group text-start ">
             <RdsInput
               required={true}
-              label="Password"
+              label={`${t('Password')}`}
               placeholder="Password"
               inputType="password"
               onChange={passwordhandleChange}
@@ -250,12 +252,12 @@ const RdsCompLogin = (
               dataTestId="password"
             ></RdsInput>
           </div>
-          <div className="d-flex justify-content-between mb-4">
+          <div className="d-flex justify-content-between mt-2 mb-0">
             <div>
               <div className="form-group mb-3">
                 <RdsCheckbox
-                  label={"Remember me"}
-                  checked={rememberMe}
+                    label={`${t('Remember Me')} ?`}
+                    checked={rememberMe}
                   onChange={onCheckedHandler}
                   dataTestId="remember-me"
                 ></RdsCheckbox>
@@ -267,13 +269,13 @@ const RdsCompLogin = (
                 href="javascript:void(0)"
                 onClick={forgotPasswordHandler}
               >
-                Forgot password ?
+                  {`${t('Forgot Password')}`}
               </a>
             </div>
           </div>
           <RdsButton
-            label="Login"
-            colorVariant="primary"
+              label={`${t('Login')}`}
+              colorVariant="primary"
             showLoadingSpinner={true}
             isDisabled={!isFormValid}
             block={true}
@@ -284,14 +286,13 @@ const RdsCompLogin = (
           />
           </form>
           <div className="mt-3">
-            <p>Don't Have An Account  <span><a
+          <p>{`${t('Dont')} ${t('have')} ${t('an')} ${t('account')} `}  <span><a
               className="link-primary text-decoration-none"
               href="javascript:void(0)"
               onClick={registerHandler}
             >
-              Register
+              {t('Register')}
             </a></span></p>
-            
           </div>
 
           <div className="pt-2">

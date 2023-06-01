@@ -194,12 +194,12 @@ useEffect(()=>{
       //   }
       // })
       // setimpersonanteTenant(impersonateToken)
-      const impersonanteUserId= sessionStorage.getItem('impersonateUserId');
-      const impersonateUserName= sessionStorage .getItem('impersonateUserName')
+      // const impersonanteUserId= sessionStorage.getItem('impersonateUserId');
+      // const impersonateUserName= sessionStorage .getItem('impersonateUserName')
 
-      if (impersonanteUserId && impersonateUserName){
-        navigate("/dashboard")
-      }
+      // if (impersonanteUserId && impersonateUserName){
+      //   navigate("/dashboard")
+      // }
 
     })
   }
@@ -512,7 +512,7 @@ useEffect(()=>{
                   navtabsItems={navtabsItems}
                   type="tabs"
                   isNextPressed={showTenantSettings}
-                  activeNavTabId={activeNavTabIdEdit}
+                  
                   activeNavtabOrder={(activeNavTabIdEdit) => {
                     setActiveNavTabIdEdit(activeNavTabIdEdit),
                       setShowTenantSettings(false);
