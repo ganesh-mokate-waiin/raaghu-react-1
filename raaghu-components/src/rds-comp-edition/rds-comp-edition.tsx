@@ -95,7 +95,7 @@ const RdsCompEdition = (props: RdsCompEditionProps) => {
                   navtabsItems={navtabsItems}
                   type="tabs"
                   isNextPressed={showTenantSettings}
-                  activeNavTabId={activeNavTabId}
+                  
                   activeNavtabOrder={(activeNavTabId) => {
                     setActiveNavTabId(activeNavTabId);
                       setShowTenantSettings(false);

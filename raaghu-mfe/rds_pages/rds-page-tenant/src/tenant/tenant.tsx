@@ -505,7 +505,7 @@ useEffect(()=>{
                   navtabsItems={navtabsItems}
                   type="tabs"
                   isNextPressed={showTenantSettings}
-                  activeNavTabId={activeNavTabIdEdit}
+                  
                   activeNavtabOrder={(activeNavTabIdEdit) => {
                     setActiveNavTabIdEdit(activeNavTabIdEdit),
                       setShowTenantSettings(false);

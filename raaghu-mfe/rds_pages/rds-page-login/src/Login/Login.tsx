@@ -81,12 +81,12 @@ const Login: React.FC<LoginProps> = (props: LoginProps) => {
 
   return (
     <div className="login-background">
-      <div className="align-items-center d-flex justify-content-center vh-100 m-auto login-container">
+      <div className="align-items-center d-flex justify-content-center vh-100 m-auto login-container login">
         <div className="container-fluid m-2">
           <div className="bg-white row rounded-3 ">
             <div className="col-md-6">
               <div className="py-4 px-3">
-                <div className="pb-4">
+                <div className="pb-3">
                   <div className="text-center">
                     <img src="./assets/raaghu_text_logo.svg"></img>
                   </div>

@@ -1,12 +1,12 @@
-/* eslint-disable */
-import RdsCompApplicationWorkflows from './RdsCompApplicationWorkflows';
+///* eslint-disable */
+//import RdsCompApplicationWorkflows from './RdsCompApplicationWorkflows';
 
-export default {
-  title: "RdsCompApplicationWorkflows",
-};
+//export default {
+//  title: "RdsCompApplicationWorkflows",
+//};
 
-export const Default = () => <RdsCompApplicationWorkflows />;
+//export const Default = () => <RdsCompApplicationWorkflows />;
 
-Default.story = {
-  name: 'default',
-};
+//Default.story = {
+//  name: 'default',
+//};

@@ -562,7 +562,7 @@ const RdsCompDatatable = (props: RdsCompDatatableProps) => {
                                 tableDataRow[tableHeader.key]}
                               {tableHeader.datatype === "badge" && (
                                 <RdsBadge colorVariant={tableDataRow[tableHeader.key].badgeColorVariant
-                                  ? tableDataRow[tableHeader.key].badgeColorVariant : "primary"} label={tableDataRow[tableHeader.key].content
+                                  ? tableDataRow[tableHeader.key].badgeColorVariant : "success"} label={tableDataRow[tableHeader.key].content
                                     ? tableDataRow[tableHeader.key].content
                                     : tableDataRow[tableHeader.key]}
                                 />
