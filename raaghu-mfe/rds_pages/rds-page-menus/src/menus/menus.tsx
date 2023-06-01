@@ -281,7 +281,7 @@ const Menus = () => {
                   <div className="my-1">
                     <RdsButton
                       type={"button"}
-                      label="Add Root Menu Item"
+                      label="Add Root Menu"
                       iconColorVariant="light"
                       size="small"
                       colorVariant="primary"
@@ -300,7 +300,7 @@ const Menus = () => {
                 scrolling={false}
                 preventEscapeKey={false}
                 offId={"menu-add-off"}
-                canvasTitle={"New Menu"}
+                canvasTitle={"New URL"}
               >
                 <RdsCompNewMenu
                   menusData={Data}
@@ -335,7 +335,7 @@ const Menus = () => {
               scrolling={false}
               preventEscapeKey={false}
               offId={"amenus"}
-              canvasTitle={"New Sub Menu"}
+              canvasTitle={"New URL"}
             >
               <RdsCompNewMenu
                 menusData={Data}
@@ -348,7 +348,7 @@ const Menus = () => {
               scrolling={false}
               preventEscapeKey={false}
               offId={"bmenus"}
-              canvasTitle={"Edit Menu"}
+              canvasTitle={"Edit URL"}
             >
               <RdsCompNewMenu menusData={Data} onSubmit={handlerSaveEditMenu} />
             </RdsOffcanvas>

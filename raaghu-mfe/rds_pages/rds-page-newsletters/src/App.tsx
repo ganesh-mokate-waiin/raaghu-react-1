@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Newsletters from './newsletters/Newsletters';
 
 
 
 const App = () => {
 	return (
-		<div>
+		<Suspense>
 			<Newsletters></Newsletters>
-		</div>
+		</Suspense>
 	);
 };
 
