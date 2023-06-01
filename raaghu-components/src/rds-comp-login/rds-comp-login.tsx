@@ -284,13 +284,13 @@ const RdsCompLogin = (
           />
           </form>
           <div className="mt-3">
-            <p>Don't Have An Account  <span><a
+            <div>Don't Have An Account  <span><a
               className="link-primary text-decoration-none"
               href="javascript:void(0)"
               onClick={registerHandler}
             >
               Register
-            </a></span></p>
+            </a></span></div>
             
           </div>
 
